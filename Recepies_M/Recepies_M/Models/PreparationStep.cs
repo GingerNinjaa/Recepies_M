@@ -9,5 +9,6 @@ namespace Recepies_M.Models
         public int id { get; set; }
         public int stepNumber { get; set; }
         public string text { get; set; }
+        public int recipeId { get; set; }
     }
 }
