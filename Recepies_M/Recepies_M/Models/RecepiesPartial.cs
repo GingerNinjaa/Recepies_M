@@ -12,5 +12,6 @@ namespace Recepies_M.Models
         public int preparationTime { get; set; }
         public string category { get; set; }
         public string difficulty { get; set; }
+        public int people { get; set; }
     }
 }

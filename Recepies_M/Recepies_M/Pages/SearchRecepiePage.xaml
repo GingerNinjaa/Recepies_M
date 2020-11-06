@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recepies_M.Pages.SearchRecepiePage"
-             BackgroundColor="#263A4F">
+             BackgroundColor="Gray">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Frame Padding="5"
                        HasShadow="False"
                        HorizontalOptions="FillAndExpand"
-                       BackgroundColor="#263A4F"
+                       BackgroundColor="Gray"
                        BorderColor="Transparent">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="backarrowicon.png"
@@ -21,10 +21,13 @@
                         <Frame Margin="0,0,15,0"
                                Padding="0"
                                HasShadow="False"
-                               HorizontalOptions="FillAndExpand">
+                               HorizontalOptions="FillAndExpand"
+                               CornerRadius="20">
                             <Entry Placeholder="Search Movie"
                                    x:Name="EntSearchMovie" 
-                                   TextChanged="EntSearchMovie_OnTextChanged"/>
+                                   TextChanged="EntSearchMovie_OnTextChanged"
+                                   TextColor="Black"
+                                   BackgroundColor="White"/>
                         </Frame>
                     </StackLayout>
                 </Frame>

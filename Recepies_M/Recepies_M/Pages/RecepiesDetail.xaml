@@ -14,9 +14,9 @@
                     <Image x:Name="ImgMovie"
                            Aspect="Fill"
                            HeightRequest="350" />
-                    <BoxView BackgroundColor="Black"
+                   <!--<BoxView BackgroundColor="Black"
                              HeightRequest="350"
-                             Opacity="0.3" />
+                             Opacity="0.3" />-->
                     <Image Source="backicon"
                            Margin="20,20,0,0"
                            HorizontalOptions="Start"
@@ -26,83 +26,86 @@
                             <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    <Image Source="playicon.png"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Grid.Row="0"
-                           Grid.RowSpan="1">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapVideo" />
-                        </Image.GestureRecognizers>
-                    </Image>
+                    
                 </Grid>
 
                 <Frame VerticalOptions="FillAndExpand"
                        IsClippedToBounds="False"
                        BackgroundColor="Gray"
-                       Margin="0,-40,0,0"
-                       CornerRadius="25"
+                       Margin="0,-40,0,-35"
+                       CornerRadius="35"
                        HasShadow="False">
+
+
                     <StackLayout Margin="0,-50,0,0">
-                        <Grid HeightRequest="200"
-                              VerticalOptions="Start">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="4*" />
-                                <ColumnDefinition Width="6*" />
-                            </Grid.ColumnDefinitions>
-                            <Frame  Grid.Column="0"
-                                    CornerRadius="15"
-                                    Padding="0">
-                                <Image x:Name="ImgRecepieCover"
-                                       Aspect="Fill"
-                                       HeightRequest="200"
-                                       VerticalOptions="Start"
-                                       Source="{Binding imageUrl }"/>
+                        <Label x:Name="LblTitle"
+                               TextColor="White"
+                               FontSize="Medium"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Margin="0,40,0,0"
+                               BackgroundColor="Red"/>
+
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0">
+                            <Frame BackgroundColor="#8B93A6"
+                                   BorderColor="#707070"
+                                   Padding="8"
+                                   CornerRadius="30">
+                                <Label TextColor="White"
+                                       x:Name="LblCategory"/>
                             </Frame>
-                            <StackLayout Grid.Column="1"
+                        </StackLayout>
+
+
+                        <Grid VerticalOptions="Start"
+                              BackgroundColor="Blue">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                           <!-- <StackLayout Grid.Column="0"
                                          Padding="5"
                                          Spacing="5"
-                                         Margin="10,40,0,0">
-                                <Label x:Name="LblTitle"
-                                       TextColor="White"
-                                       FontSize="Medium" 
-                                       Text="{Binding title}"/>
-                                <StackLayout Orientation="Horizontal"
-                                             Spacing="0">
-                                    <Frame BackgroundColor="#8B93A6"
-                                           BorderColor="#707070"
-                                           Padding="8"
-                                           CornerRadius="30">
-                                        <Label TextColor="White"
-                                               x:Name="LblCategory"
-                                               Text="{Binding category}"/>
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
+                                         Margin="10,40,0,0"
+                                         BackgroundColor="Yellow">-->
+
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" BackgroundColor="Aqua"
+                                             Grid.Column="0">
                                     <Label x:Name="LblDifficulty"
-                                           TextColor="White" 
-                                           Text="{Binding difficulty}"/>
+                                           TextColor="White" />
                                     <Image Source="star.png"
                                            VerticalOptions="Center"
                                            Aspect="Fill"
                                            HeightRequest="20"
-                                           WidthRequest="20" />
+                                           WidthRequest="20" 
+                                    />
                                 </StackLayout>
+
                                 <Label x:Name="LblPeople"
                                        TextColor="White"
-                                       Text="Dla {Binding people} osób"/>
+                                       Grid.Column="1"/>
+
+
                                 <Label x:Name="LblPreparationTime"
                                        TextColor="White"
-                                       Text="Czas przygotowania: {Binding preparationTime} min"/>
-                            </StackLayout>
+                                       Grid.Column="2"/>
+                                <!--</StackLayout>-->
                         </Grid>
+
                         <Label Text="Opis:"
                                FontSize="Medium"
                                Margin="0,20,0,0"
                                TextColor="White" />
 
-                        <Label Text="{Binding description}"
-                               Margin="0,30,0,0"
+                        <Label x:Name="LblDescription"
+                               Margin="0,20,0,0"
                                TextColor="White" />
 
                         <BoxView BackgroundColor="#8B93A6"
@@ -139,10 +142,10 @@
                                  HeightRequest="1" />
                         <Label Text="Przygotowanie:"
                                TextColor="White" />
-                        <CollectionView x:Name="LvPreparationStep" >
+                        <CollectionView x:Name="LvPreparationStep" HeightRequest="350">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="10">
+                                    <Grid Padding="10" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
@@ -167,6 +170,10 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
+
+                        <BoxView BackgroundColor="#8B93A6"
+                                 HeightRequest="1" 
+                                 Margin="0,0,0,30"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>

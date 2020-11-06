@@ -18,12 +18,14 @@ namespace Recepies_M.Pages
 
         public ObservableCollection<Ingredient> IngredientsColection;
         public ObservableCollection<PreparationStep> PreparationStepsColection;
+        public Recepies Recepieses;
 
         public RecepiesDetail(int recepieId)
         {
             InitializeComponent();
             IngredientsColection = new ObservableCollection<Ingredient>();
             PreparationStepsColection = new ObservableCollection<PreparationStep>();
+            Recepieses = new Recepies();
             GetRecepieDetail(recepieId);
             
         }
@@ -32,6 +34,22 @@ namespace Recepies_M.Pages
         {
             
             var recepie = await ApiService.GetRecepieDetail(movieId);
+
+            Recepieses = (Recepies)recepie.First();
+
+
+
+            this.ImgMovie.Source = Recepieses.imageUrl;
+            this.LblCategory.Text = Recepieses.category;
+            this.LblPeople.Text = Recepieses.people.ToString();
+            this.LblTitle.Text = Recepieses.title;
+            this.LblDifficulty.Text = Recepieses.difficulty;
+            this.LblPeople.Text = $"Dla {Recepieses.people.ToString()} osób";
+            this.LblPreparationTime.Text = $"Czas przygotowania: {Recepieses.preparationTime.ToString()} min";
+            this.LblDescription.Text = Recepieses.description;
+            
+
+
 
             var test = recepie.SelectMany(x => x.ingredients).ToList();
 

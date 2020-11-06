@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Recepies_M.Models;
 using Recepies_M.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +29,6 @@ namespace Recepies_M.Pages
 
         private async void GetAllRecepies()
         {
-
             pageNumber++;
 
             var recepies = await ApiService.GetAllRecepiesPartial(this.pageNumber, 5);
@@ -79,6 +79,25 @@ namespace Recepies_M.Pages
         private async void TapSearch_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new SearchRecepiePage());
+        }
+
+        private async void TapContact_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ContactPage());
+        }
+
+        private async void TapLogout_OnTapped(object sender, EventArgs e)
+        {
+           Preferences.Set("accessToken", String.Empty);
+           Preferences.Set("tokenExpirationTime", 0);
+
+           Application.Current.MainPage = new LoginPage();
+           await Navigation.PushModalAsync(new LoginPage());
+        }
+
+        private async void TapAcount_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new AccountPage());
         }
     }
 }

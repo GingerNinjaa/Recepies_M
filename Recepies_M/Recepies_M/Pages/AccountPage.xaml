@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Recepies_M.Pages.AccountPage"
+			 BackgroundImage="AccountBackground.jpg">
+	<ContentPage.Content>
+		<ScrollView>
+			<StackLayout>
+				<Grid RowSpacing="0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1*" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+
+					<Image Source="backicon"
+						   Margin="20,20,0,0"
+						   HorizontalOptions="Start"
+						   VerticalOptions="Start"
+						   Grid.Row="0">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
+						</Image.GestureRecognizers>
+					</Image>
+				</Grid>
+
+				<Frame x:Name="FrEdit"  
+                    HeightRequest="150" 
+					   IsClippedToBounds="False"
+					   BackgroundColor="White"
+					   Margin="15,200,15,-35"
+					   CornerRadius="40"
+					   HasShadow="True"
+					   Opacity="0.6">
+                    <StackLayout>
+
+                        <ScrollView Orientation="Horizontal">
+                    <Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="6*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+                        <Label x:Name="LblUserName"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               TextColor="Black"
+                               HorizontalOptions="End"
+                               FontSize="Title"
+                               Opacity="1"
+                               Text="lalal"/>
+						<Label x:Name="LblUserNameValue"
+						   Grid.Column="1"
+						   Grid.Row="0"
+						   TextColor="Black"
+						   HorizontalOptions="Start"
+						   FontSize="Title"
+						   Opacity="1"
+						   Text="dasda"/>
+						<Label x:Name="LblEmail"
+							   Grid.Column="0"
+							   Grid.Row="1"
+							   TextColor="Black"
+							   HorizontalOptions="End"
+							   FontSize="Title"
+							   Opacity="1"
+							   Text="Email:"/>
+						<Label x:Name="LblEmailValue"
+							   Grid.Column="1"
+							   Grid.Row="1"
+							TextColor="Black"
+							FontSize="Title"
+							   HorizontalOptions="Start"
+							Opacity="1"
+							Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+                    </Grid>
+                    </ScrollView>
+
+                        <StackLayout x:Name="SlEdit"
+                                     Orientation="Horizontal"
+									 Margin="0,30,0,0"
+                                     HorizontalOptions="Center"
+                                     Spacing="0">
+                            <Button x:Name="BtEdytuj"
+                                    Text="Edytuj"
+                                    BorderRadius="30"
+                                    TextColor="Black"
+                                    BorderColor="Black"
+                                    BorderWidth="2"
+                                    BackgroundColor="Transparent"
+                                    Clicked="Button_OnClicked"/>
+                        </StackLayout>
+
+                        <ScrollView x:Name="SVEdit"
+                                    Orientation="Horizontal"
+                                    IsVisible="False">
+                            <Grid Margin="10,50,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="6*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="aa"
+                                   Margin="0,10,0,0"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   TextColor="Black"
+                                   HorizontalOptions="End"
+                                   FontSize="Title"
+                                   Opacity="1"
+                                   Text="lalal"/>
+                            <Frame 
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Padding="0"
+                                CornerRadius="20"
+                                BorderColor="Black">
+                                    <Entry x:Name="EntName"
+                                           TextColor="Black"
+                                BackgroundColor="Red"/>
+                            </Frame>
+                                <Label x:Name="cc"
+                                       Margin="0,10,0,0"
+                                   Grid.Column="0"
+                                   Grid.Row="1"
+                                   TextColor="Black"
+                                   HorizontalOptions="End"
+                                   FontSize="Title"
+                                   Opacity="1"
+                                   Text="Email:"/>
+                            <Frame 
+                                Grid.Column="1"
+                                   Grid.Row="1"
+                                Padding="0"
+                                CornerRadius="20"
+                                BorderColor="Black">
+                                    <Entry x:Name="EntEmail"
+                                           TextColor="Black"
+                                           BackgroundColor="Red"/>
+                            </Frame>
+                            </Grid>
+                        </ScrollView>
+                        <StackLayout  x:Name="SlOption"
+                                      Orientation="Horizontal"
+                                      
+                                      Margin="-10,30,0,0"
+                                      HorizontalOptions="Center"
+                                      Spacing="0"
+                                      IsVisible="False">
+                            <Button x:Name="BtClear"
+                                    Text="Close"
+                                    BorderRadius="30"
+                                    WidthRequest="150"
+                                    Margin="20,20,5,0"
+                                    TextColor="Black"
+                                    BorderColor="Black"
+                                    BorderWidth="2"
+                                    BackgroundColor="Transparent"
+                                    Clicked="BtClose_OnClicked"/>
+
+                            <Button x:Name="BtEdit"
+                                    Text="Edit"
+                                    BorderRadius="30"
+                                    WidthRequest="150"
+                                    Margin="5,20,20,0"
+                                    TextColor="Black"
+                                    BorderColor="Black"
+                                    BorderWidth="2"
+                                    BackgroundColor="Green"
+                                    Clicked="BtClose_OnClicked"/>
+                        </StackLayout>
+
+                        <StackLayout  x:Name="SlClose"
+                                      Orientation="Horizontal"
+                                      Margin="0,30,0,0"
+                                      HorizontalOptions="Center"
+                                      Spacing="0"
+                                      IsVisible="False">
+                            <Button x:Name="BtClose"
+                                    Text="Close"
+                                    BorderRadius="30"
+                                    TextColor="Black"
+                                    BorderColor="Black"
+                                    BorderWidth="2"
+                                    BackgroundColor="Transparent"
+                                    Clicked="BtClose_OnClicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+			</StackLayout>
+			
+		</ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+	

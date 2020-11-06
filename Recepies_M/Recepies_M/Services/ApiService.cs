@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Fabric;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -55,9 +56,15 @@ namespace Recepies_M.Services
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var resoult = JsonConvert.DeserializeObject<Token>(jsonResult);
 
+                Preferences.Set("email", email);
+
                 Preferences.Set("accessToken", resoult.access_token);
                 Preferences.Set("userId", resoult.user_id);
                 Preferences.Set("userName", resoult.user_Name);
+                Preferences.Set("tokenExpirationTime", resoult.expiration_Time);
+                Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                Preferences.Set("currentTime", unixTimestamp);
+                
                 return true;
             }
 
@@ -65,6 +72,7 @@ namespace Recepies_M.Services
 
         public static async Task<List<RecepiesPartial>> GetAllRecepiesPartial(int pageNuber, int pageSize)
         {
+            await TokenValidator.Check();
             var httpClient = new HttpClient();
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
@@ -73,39 +81,21 @@ namespace Recepies_M.Services
             return JsonConvert.DeserializeObject<List<RecepiesPartial>>(response);
         }
 
-        public static async Task<IEnumerable<Recepies>> GetRecepieDetail(int id)
+        public static async Task<ICollection<Recepies>> GetRecepieDetail(int id)
         {
+            await TokenValidator.Check();
             var httpClient = new HttpClient();
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var response = await httpClient.GetStringAsync(AppSettings.ApiUrl +
                                                            $"Recipes/RecepieDetail/{id}");
 
-            var Output = JsonConvert.DeserializeObject<IEnumerable<Recepies>>(response);
-
-            var test = JsonConvert.DeserializeObject<ICollection<Recepies>>(response);
-
-            //return JsonConvert.DeserializeObject<Recepies>(response);
-            return Output;
+            return JsonConvert.DeserializeObject<ICollection<Recepies>>(response);
         }
-
-
-        //public static async Task<Recepies> GetRecepieDetail(int id)
-        //{
-        //    var httpClient = new HttpClient();
-
-        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-        //    var response = await httpClient.GetStringAsync(AppSettings.ApiUrl +
-        //                                                   $"Recipes/RecepieDetail/{id}");
-
-        //    IEnumerable<Recepies> Output = JsonConvert.DeserializeObject<IEnumerable<Recepies>>(response);
-        //    //return JsonConvert.DeserializeObject<Recepies>(response)
-
-        //    return Output;
-        //}
 
         public static async Task<List<FindRecepie>> FindRecepies(string title)
         {
+            await TokenValidator.Check();
             var httpClient = new HttpClient();
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
@@ -113,5 +103,7 @@ namespace Recepies_M.Services
                                                            $"Recipes/FindRecipe?recipeName={title}");
             return JsonConvert.DeserializeObject<List<FindRecepie>>(response);
         }
+
+ 
     }
 }
