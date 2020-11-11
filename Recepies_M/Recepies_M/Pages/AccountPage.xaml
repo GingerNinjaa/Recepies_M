@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="Recepies_M.Pages.AccountPage"
-			 BackgroundImage="AccountBackground.jpg">
-	<ContentPage.Content>
-		<ScrollView>
+             xmlns:viewModels="clr-namespace:Recepies_M.ViewModels;assembly=Recepies_M"
+             BackgroundImage="AccountBackground.jpg">
+    <ContentPage.BindingContext>
+        <viewModels:AccountPageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Teal"
+                     Command="{Binding RefreshCommand}">
+            <ScrollView>
 			<StackLayout>
 				<Grid RowSpacing="0">
 					<Grid.RowDefinitions>
@@ -26,11 +33,10 @@
 				<Frame x:Name="FrEdit"  
                     HeightRequest="150" 
 					   IsClippedToBounds="False"
-					   BackgroundColor="White"
+					   BackgroundColor="#9Cffffff"
 					   Margin="15,200,15,-35"
 					   CornerRadius="40"
-					   HasShadow="True"
-					   Opacity="0.6">
+					   HasShadow="True">
                     <StackLayout>
 
                         <ScrollView Orientation="Horizontal">
@@ -192,9 +198,42 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-			</StackLayout>
-			
-		</ScrollView>
+
+                <Label TextColor="Black"
+                       Margin="0,50,0,0"
+                       VerticalOptions="Center"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center"
+                       Text="Twoje przepsy"/>
+
+                <Frame CornerRadius="40"
+                       Margin="15,30,15,50"
+                       HeightRequest="180"
+                       BackgroundColor="#9Cffffff">
+                        <CarouselView x:Name="CVMyRecepies" Opacity="1" ItemsSource="{Binding RecepiesPartials}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Image HeightRequest="150"
+                                       Opacity="1"
+                                       Source="{Binding imageUrl}"/>
+                                <!--Source="{Binding imageUrl}"-->
+                                        <Label TextColor="Black"
+                                       Opacity="1"
+                                       VerticalOptions="Center" 
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="Medium"
+                                       Text="{Binding title}"/>
+                                        <!--Text="{Binding title}"-->
+                                    </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
 	
