@@ -23,14 +23,15 @@ namespace Recepies_M.Pages
             Navigation.PopModalAsync();
         }
 
-        private async void ImgLogin_OnTapped(object sender, EventArgs e)
+
+        private async void Button_OnClicked(object sender, EventArgs e)
         {
             var responce = await ApiService.LoginUser(EntEmail.Text, EntPassword.Text);
 
             if (responce)
             {
-                Preferences.Set("email",EntEmail.Text);
-                Preferences.Set("password",EntPassword.Text);
+                Preferences.Set("email", EntEmail.Text);
+                Preferences.Set("password", EntPassword.Text);
 
                 Application.Current.MainPage = new NavigationPage(new AppMainPage());
             }

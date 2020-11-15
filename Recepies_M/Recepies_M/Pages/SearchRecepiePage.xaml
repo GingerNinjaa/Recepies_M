@@ -12,8 +12,10 @@
                        BackgroundColor="Black"
                        BorderColor="Transparent">
                     <StackLayout Orientation="Horizontal">
-                        <Image Source="backarrowicon.png"
-                               Margin="10,0,10,0">
+                        <Image Source="backicon.png"
+                               Margin="10,0,10,0"
+                               HeightRequest="25"
+                               WidthRequest="25">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped" />
                             </Image.GestureRecognizers>

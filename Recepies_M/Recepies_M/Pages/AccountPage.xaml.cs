@@ -16,29 +16,10 @@ namespace Recepies_M.Pages
     {
 
         private AccountPageViewModel AccountPageViewModel;
+
         public AccountPage()
         {
             InitializeComponent();
-            //Filldata();
-            //FillCaruse();
-        }
-
-
-        public void Filldata()
-        {
-            // Preferences.Get("userName",String.Empty);
-            this.LblUserNameValue.Text = Preferences.Get("userName", String.Empty);
-            this.LblEmailValue.Text = Preferences.Get("email", String.Empty);
-        }
-
-        private async void FillCaruse()
-        {
-            
-          // var userId = Int32.Parse(Preferences.Get("userId", string.Empty));
-
-            var recepieSearchList = await ApiService.GetAllRecepiesPartialById(1,1,5);
-
-            CVMyRecepies.ItemsSource = recepieSearchList;
         }
 
         private void ImgBack_OnTapped(object sender, EventArgs e)

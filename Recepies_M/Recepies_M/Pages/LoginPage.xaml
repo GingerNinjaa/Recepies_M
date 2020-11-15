@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+
              mc:Ignorable="d"
              x:Class="Recepies_M.Pages.LoginPage"
              BackgroundColor="#263A4F">
@@ -18,6 +20,8 @@
                 <Image Source="backicon.png"
                        HorizontalOptions="Start"
                        Grid.Column="0"
+                       HeightRequest="25"
+                       WidthRequest="25"
                        Aspect="AspectFit">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped" />
@@ -25,39 +29,47 @@
                 </Image>
                 <Label Text="Zaloguj się"
                        TextColor="White"
+                       FontFamily="Lobster"
                        VerticalOptions="Start"
                        HorizontalOptions="Center"
                        FontSize="Title"
                        Grid.Column="1" />
             </Grid>
-            <Image Source="loginuser.png"
-                   Margin="0,40,0,0"
-                   HorizontalOptions="Center"
-                   HeightRequest="80"
-                   WidthRequest="80" />
+
+            <forms:AnimationView 
+                Animation="get_in_touch.json"
+                AutoPlay="True"
+                Loop="True"
+                HeightRequest="350"
+                WidthRequest="350"
+                BackgroundColor="Transparent"/>
+
             <Entry Placeholder="Email"
                    x:Name="EntEmail"
+                   FontFamily="Lobster"
                    TextColor="White"
                    PlaceholderColor="White"
                    BackgroundColor="#263A4F" />
-            <!--<BoxView HeightRequest="1"
-                     BackgroundColor="White"
-                     Margin="0,-15,0,0" />-->
             <Entry Placeholder="Hasło"
                    x:Name="EntPassword"
+                   FontFamily="Lobster"
                    IsPassword="True"
                    TextColor="White"
                    PlaceholderColor="White"
                    BackgroundColor="#263A4F" />
-            <!--<BoxView HeightRequest="1"
-                     BackgroundColor="White"
-                     Margin="0,-15,0,0" />-->
-            <Image Source="login.png"
-                   Margin="0,30,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="ImgLogin"  Tapped="ImgLogin_OnTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
+
+            <Button Text="Login"                  
+                    FontFamily="Lobster"
+                    HeightRequest="60"
+                    WidthRequest="50"
+                    CornerRadius="40"                                  
+                    Margin="0,30,0,0"                   
+                    TextColor="White"                  
+                    BackgroundColor="Transparent" 
+                    BorderWidth="2"
+                    BorderColor="White"
+                    Command="{Binding OpenMenuPage}"
+                    Clicked="Button_OnClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

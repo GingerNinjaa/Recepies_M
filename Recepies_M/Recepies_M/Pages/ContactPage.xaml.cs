@@ -21,5 +21,11 @@ namespace Recepies_M.Pages
         {
             Navigation.PopModalAsync();
         }
+
+        private void BtnCall_OnClicked(object sender, EventArgs e)
+        {
+            var address = "damian.lewandowsky@gmail.com";
+            Device.OpenUri(new Uri($"mailto:{address}"));
+        }
     }
 }

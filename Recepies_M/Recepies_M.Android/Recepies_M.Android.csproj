@@ -54,6 +54,12 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Android.Lottie">
+      <Version>3.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>3.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
@@ -66,6 +72,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\cafe_cup.json" />
+    <AndroidAsset Include="Assets\coffe_out.json" />
+    <AndroidAsset Include="Assets\Coffe_woman.json" />
+    <AndroidAsset Include="Assets\social-media-animation.json" />
+    <AndroidAsset Include="Assets\rocket-launch.json" />
+    <AndroidAsset Include="Assets\groceries-basket.json" />
+    <AndroidAsset Include="Assets\food-carousel.json" />
+    <AndroidAsset Include="Assets\cooking.json" />
+    <AndroidAsset Include="Assets\chatbot-web.json" />
+    <AndroidAsset Include="Assets\chat-ark.json" />
+    <AndroidAsset Include="Assets\4762-food-carousel.json" />
+    <AndroidAsset Include="Assets\28452-skipppro-login-animation.json" />
+    <AndroidAsset Include="Assets\get_in_touch.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -105,9 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\backarrowicon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\backicon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bookticket.png" />
@@ -153,6 +169,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\AccountBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\climbing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\backicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

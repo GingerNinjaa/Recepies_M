@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Recepies_M.Models;
 using Recepies_M.Services;
+using Recepies_M.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,30 +16,13 @@ namespace Recepies_M.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppMainPage : ContentPage
     {
-        public ObservableCollection<RecepiesPartial> RecepiesesColection;
-
-
         private int pageNumber = 0;
 
         public AppMainPage()
         {
             InitializeComponent();
-            RecepiesesColection = new ObservableCollection<RecepiesPartial>();
-            GetAllRecepies();
         }
 
-        private async void GetAllRecepies()
-        {
-            pageNumber++;
-
-            var recepies = await ApiService.GetAllRecepiesPartial(this.pageNumber, 5);
-            foreach (var recepie in recepies)
-            {
-                RecepiesesColection.Add(recepie);
-            }
-
-            CvRecepies.ItemsSource = RecepiesesColection;
-        }
 
         private async void TapMenu_OnTapped(object sender, EventArgs e)
         {
@@ -55,7 +39,8 @@ namespace Recepies_M.Pages
 
         private void CvRecepies_OnRemainingItemsThresholdReached(object sender, EventArgs e)
         {
-            GetAllRecepies();
+            AppMainPageViewModel appMainPageVM = new AppMainPageViewModel();
+            appMainPageVM.GetAll();
         }
 
 

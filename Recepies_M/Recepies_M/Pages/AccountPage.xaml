@@ -3,6 +3,8 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="Recepies_M.Pages.AccountPage"
              xmlns:viewModels="clr-namespace:Recepies_M.ViewModels;assembly=Recepies_M"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              BackgroundImage="AccountBackground.jpg">
     <ContentPage.BindingContext>
         <viewModels:AccountPageViewModel />
@@ -12,84 +14,95 @@
                      RefreshColor="Teal"
                      Command="{Binding RefreshCommand}">
             <ScrollView>
-			<StackLayout>
-				<Grid RowSpacing="0">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="1*" />
-						<RowDefinition Height="Auto" />
-					</Grid.RowDefinitions>
+                <StackLayout>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-					<Image Source="backicon"
+                        <Image Source="backicon"
 						   Margin="20,20,0,0"
 						   HorizontalOptions="Start"
 						   VerticalOptions="Start"
+                           HeightRequest="25"
+                           WidthRequest="25"
 						   Grid.Row="0">
-						<Image.GestureRecognizers>
-							<TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
-						</Image.GestureRecognizers>
-					</Image>
-				</Grid>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
 
-				<Frame x:Name="FrEdit"  
-                    HeightRequest="150" 
-					   IsClippedToBounds="False"
-					   BackgroundColor="#9Cffffff"
-					   Margin="15,200,15,-35"
-					   CornerRadius="40"
-					   HasShadow="True">
-                    <StackLayout>
+    <forms:AnimationView 
+        Animation="food-carousel.json"
+        AutoPlay="True" 
+        Loop="True"
+        HeightRequest="250"
+        WidthRequest="250"
+        BackgroundColor="Transparent"/>
 
-                        <ScrollView Orientation="Horizontal">
-                    <Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="1*"/>
-							<ColumnDefinition Width="6*"/>
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto"/>
-							<RowDefinition Height="Auto"/>
-						</Grid.RowDefinitions>
-                        <Label x:Name="LblUserName"
+
+                    <Frame x:Name="FrEdit"  
+                           HeightRequest="150" 
+                           IsClippedToBounds="False"
+                           BackgroundColor="#9Cffffff"
+                           Margin="15,100,15,-35"
+                           CornerRadius="40"
+                           HasShadow="True">
+                        <StackLayout>
+
+                            <ScrollView Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="LblUserName"
                                Grid.Column="0"
                                Grid.Row="0"
                                TextColor="Black"
                                HorizontalOptions="End"
                                FontSize="Title"
                                Opacity="1"
-                               Text="lalal"/>
-						<Label x:Name="LblUserNameValue"
+                               Text="Nazwa:"/>
+                                    <Label x:Name="LblUserNameValue"
 						   Grid.Column="1"
 						   Grid.Row="0"
 						   TextColor="Black"
 						   HorizontalOptions="Start"
 						   FontSize="Title"
 						   Opacity="1"
-						   Text="dasda"/>
-						<Label x:Name="LblEmail"
-							   Grid.Column="0"
-							   Grid.Row="1"
-							   TextColor="Black"
-							   HorizontalOptions="End"
-							   FontSize="Title"
-							   Opacity="1"
-							   Text="Email:"/>
-						<Label x:Name="LblEmailValue"
-							   Grid.Column="1"
-							   Grid.Row="1"
-							TextColor="Black"
-							FontSize="Title"
-							   HorizontalOptions="Start"
-							Opacity="1"
-							Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
-                    </Grid>
-                    </ScrollView>
+                           Text="{Binding Name}"/>
+                                    <Label x:Name="LblEmail"
+                                           Grid.Column="0"
+                                           Grid.Row="1"
+                                           TextColor="Black"
+                                           HorizontalOptions="End"
+                                           FontSize="Title"
+                                           Opacity="1"
+                                           Text="Email:"/>
+                                    <Label x:Name="LblEmailValue"
+							                Grid.Column="1"
+							                Grid.Row="1"
+							                TextColor="Black"
+							                FontSize="Title"
+							                HorizontalOptions="Start"
+							                Opacity="1"
+                                            Text="{Binding Email}"/>
+                                </Grid>
+                            </ScrollView>
 
-                        <StackLayout x:Name="SlEdit"
+                            <StackLayout x:Name="SlEdit"
                                      Orientation="Horizontal"
 									 Margin="0,30,0,0"
                                      HorizontalOptions="Center"
                                      Spacing="0">
-                            <Button x:Name="BtEdytuj"
+                                <Button x:Name="BtEdytuj"
                                     Text="Edytuj"
                                     BorderRadius="30"
                                     TextColor="Black"
@@ -97,21 +110,21 @@
                                     BorderWidth="2"
                                     BackgroundColor="Transparent"
                                     Clicked="Button_OnClicked"/>
-                        </StackLayout>
+                            </StackLayout>
 
-                        <ScrollView x:Name="SVEdit"
+                            <ScrollView x:Name="SVEdit"
                                     Orientation="Horizontal"
                                     IsVisible="False">
-                            <Grid Margin="10,50,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="6*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Label x:Name="aa"
+                                <Grid Margin="10,50,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label x:Name="aa"
                                    Margin="0,10,0,0"
                                    Grid.Column="0"
                                    Grid.Row="0"
@@ -120,17 +133,17 @@
                                    FontSize="Title"
                                    Opacity="1"
                                    Text="lalal"/>
-                            <Frame 
+                                    <Frame 
                                 Grid.Column="1"
                                 Grid.Row="0"
                                 Padding="0"
                                 CornerRadius="20"
                                 BorderColor="Black">
-                                    <Entry x:Name="EntName"
+                                        <Entry x:Name="EntName"
                                            TextColor="Black"
                                 BackgroundColor="Red"/>
-                            </Frame>
-                                <Label x:Name="cc"
+                                    </Frame>
+                                    <Label x:Name="cc"
                                        Margin="0,10,0,0"
                                    Grid.Column="0"
                                    Grid.Row="1"
@@ -139,26 +152,26 @@
                                    FontSize="Title"
                                    Opacity="1"
                                    Text="Email:"/>
-                            <Frame 
+                                    <Frame 
                                 Grid.Column="1"
                                    Grid.Row="1"
                                 Padding="0"
                                 CornerRadius="20"
                                 BorderColor="Black">
-                                    <Entry x:Name="EntEmail"
+                                        <Entry x:Name="EntEmail"
                                            TextColor="Black"
                                            BackgroundColor="Red"/>
-                            </Frame>
-                            </Grid>
-                        </ScrollView>
-                        <StackLayout  x:Name="SlOption"
+                                    </Frame>
+                                </Grid>
+                            </ScrollView>
+                            <StackLayout  x:Name="SlOption"
                                       Orientation="Horizontal"
                                       
                                       Margin="-10,30,0,0"
                                       HorizontalOptions="Center"
                                       Spacing="0"
                                       IsVisible="False">
-                            <Button x:Name="BtClear"
+                                <Button x:Name="BtClear"
                                     Text="Close"
                                     BorderRadius="30"
                                     WidthRequest="150"
@@ -169,7 +182,7 @@
                                     BackgroundColor="Transparent"
                                     Clicked="BtClose_OnClicked"/>
 
-                            <Button x:Name="BtEdit"
+                                <Button x:Name="BtEdit"
                                     Text="Edit"
                                     BorderRadius="30"
                                     WidthRequest="150"
@@ -179,15 +192,15 @@
                                     BorderWidth="2"
                                     BackgroundColor="Green"
                                     Clicked="BtClose_OnClicked"/>
-                        </StackLayout>
+                            </StackLayout>
 
-                        <StackLayout  x:Name="SlClose"
+                            <StackLayout  x:Name="SlClose"
                                       Orientation="Horizontal"
                                       Margin="0,30,0,0"
                                       HorizontalOptions="Center"
                                       Spacing="0"
                                       IsVisible="False">
-                            <Button x:Name="BtClose"
+                                <Button x:Name="BtClose"
                                     Text="Close"
                                     BorderRadius="30"
                                     TextColor="Black"
@@ -195,44 +208,45 @@
                                     BorderWidth="2"
                                     BackgroundColor="Transparent"
                                     Clicked="BtClose_OnClicked"/>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                </Frame>
+                    </Frame>
 
-                <Label TextColor="Black"
-                       Margin="0,50,0,0"
-                       VerticalOptions="Center"
-                       FontSize="Title"
-                       HorizontalTextAlignment="Center"
-                       Text="Twoje przepsy"/>
-
-                <Frame CornerRadius="40"
-                       Margin="15,30,15,50"
-                       HeightRequest="180"
-                       BackgroundColor="#9Cffffff">
-                        <CarouselView x:Name="CVMyRecepies" Opacity="1" ItemsSource="{Binding RecepiesPartials}">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Image HeightRequest="150"
+                    <Frame CornerRadius="40"
+                           
+                           Margin="15,80,15,50"
+                           HeightRequest="250"
+                           BackgroundColor="#9Cffffff">
+                        <StackLayout>
+                            <Label TextColor="Black"
+                                    Margin="0,0,0,10"
+                                     VerticalOptions="Center"
+                                    FontSize="Title"
+                                    HorizontalTextAlignment="Center"
+                                   Text="Twoje przepsy"/>
+                            <CarouselView x:Name="CVMyRecepies" Opacity="1" ItemsSource="{Binding RecepiesPartials}">
+                                <CarouselView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <Image HeightRequest="150"
                                        Opacity="1"
                                        Source="{Binding imageUrl}"/>
-                                <!--Source="{Binding imageUrl}"-->
-                                        <Label TextColor="Black"
+                                            <!--Source="{Binding imageUrl}"-->
+                                            <Label TextColor="Black"
                                        Opacity="1"
                                        VerticalOptions="Center" 
                                        HorizontalTextAlignment="Center"
                                        FontSize="Medium"
                                        Text="{Binding title}"/>
-                                        <!--Text="{Binding title}"-->
-                                    </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                </Frame>
-
-            </StackLayout>
-        </ScrollView>
+                                            <!--Text="{Binding title}"-->
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CarouselView.ItemTemplate>
+                            </CarouselView>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
         </RefreshView>
     </ContentPage.Content>
 </ContentPage>

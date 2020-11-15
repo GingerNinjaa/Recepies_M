@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Recepies_M.Models;
 using Recepies_M.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Recepies_M.ViewModels
@@ -15,14 +17,19 @@ namespace Recepies_M.ViewModels
     public class AccountPageViewModel : INotifyPropertyChanged
     {
 
-        const int RefreshDuration = 2;
         bool isRefreshing;
+        private int _UserId;
+        private int itemCount;
+        public string Name { get; set; }
+        public string Email { get; set; }
+
         public ObservableCollection<RecepiesPartial> RecepiesPartials { get; private set; }
 
         public AccountPageViewModel()
         {
             RecepiesPartials = new ObservableCollection<RecepiesPartial>();
-            RefreshApi();
+            _UserId = Preferences.Get("userId", 0);
+            GetRecepies();
         }
 
         public bool IsRefreshing
@@ -40,16 +47,39 @@ namespace Recepies_M.ViewModels
         async Task RefreshItemsAsync()
         {
             IsRefreshing = true;
-            await Task.Delay(TimeSpan.FromSeconds(RefreshDuration));
-            
-            RefreshApi();
+            await RefreshApi();
+        }
+
+        public async Task RefreshApi()
+        {
+            GetUserData();
+
+            var recepieSearchList = await ApiService.GetAllRecepiesPartialById(this._UserId, 1, 5);
+
+            foreach (var recepie in recepieSearchList)
+            {
+                RecepiesPartials.Add(recepie);
+            }
+
+            for (int i = 1; i <= recepieSearchList.Count; i++)
+            {
+                RecepiesPartials.RemoveAt(0);
+            }
 
             IsRefreshing = false;
         }
 
-       public  async Task RefreshApi()
+        public void GetUserData()
         {
-            var recepieSearchList = await ApiService.GetAllRecepiesPartialById(1, 1, 5);
+            this.Name = Preferences.Get("userName", String.Empty);
+            this.Email = Preferences.Get("email", String.Empty);
+        }
+
+        public async Task GetRecepies()
+        {
+            GetUserData();
+
+            var recepieSearchList = await ApiService.GetAllRecepiesPartialById(this._UserId, 1, 5);
 
             foreach (var recepie in recepieSearchList)
             {

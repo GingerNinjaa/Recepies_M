@@ -14,106 +14,127 @@
                     <Image x:Name="ImgMovie"
                            Aspect="Fill"
                            HeightRequest="350" />
-                   <!--<BoxView BackgroundColor="Black"
-                             HeightRequest="350"
-                             Opacity="0.3" />-->
-                    <Image Source="backicon"
+                    <Image Source="backicon.png"
                            Margin="20,20,0,0"
                            HorizontalOptions="Start"
                            VerticalOptions="Start"
+                           HeightRequest="25"
+                           WidthRequest="25"
                            Grid.Row="0">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
                         </Image.GestureRecognizers>
                     </Image>
-                    
                 </Grid>
 
                 <Frame VerticalOptions="FillAndExpand"
                        IsClippedToBounds="False"
-                       BackgroundColor="Gray"
+                       BackgroundColor="White"
                        Margin="0,-40,0,-35"
                        CornerRadius="35"
                        HasShadow="False">
-
-
                     <StackLayout Margin="0,-50,0,0">
                         <Label x:Name="LblTitle"
-                               TextColor="White"
+                               TextColor="Black"
                                FontSize="Medium"
                                VerticalOptions="Center"
                                HorizontalTextAlignment="Center"
-                               Margin="0,40,0,0"
-                               BackgroundColor="Red"/>
-
+                               Margin="0,40,0,0"/>
                         <StackLayout Orientation="Horizontal"
-                                     Spacing="0">
-                            <Frame BackgroundColor="#8B93A6"
-                                   BorderColor="#707070"
+                                     HorizontalOptions="Center"
+                                     Spacing="0"
+                                     Margin="0,10,0,10">
+                            <Frame BackgroundColor="#8f8686"
                                    Padding="8"
                                    CornerRadius="30">
-                                <Label TextColor="White"
+                                <Label TextColor="Black"
                                        x:Name="LblCategory"/>
                             </Frame>
                         </StackLayout>
 
-
-                        <Grid VerticalOptions="Start"
-                              BackgroundColor="Blue">
+                        <Grid VerticalOptions="Start">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                           <!-- <StackLayout Grid.Column="0"
-                                         Padding="5"
-                                         Spacing="5"
-                                         Margin="10,40,0,0"
-                                         BackgroundColor="Yellow">-->
-
-                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" BackgroundColor="Aqua"
-                                             Grid.Column="0">
-                                    <Label x:Name="LblDifficulty"
-                                           TextColor="White" />
-                                    <Image Source="star.png"
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center"
+                                         Grid.Column="0"
+                                         Grid.Row="0">
+                                <Image Source="climbing.png"
                                            VerticalOptions="Center"
+                                           HorizontalOptions="Center"
                                            Aspect="Fill"
-                                           HeightRequest="20"
-                                           WidthRequest="20" 
-                                    />
-                                </StackLayout>
+                                           HeightRequest="50"
+                                           WidthRequest="50"/>
+                            </StackLayout>
 
-                                <Label x:Name="LblPeople"
-                                       TextColor="White"
-                                       Grid.Column="1"/>
+                                <Label x:Name="LblDifficulty"
+                                       HorizontalTextAlignment="Center"
+                                      TextColor="Black"
+                                      VerticalTextAlignment="Center"
+                                      Grid.Column="0"
+                                      Grid.Row="1"/>
 
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center"
+                                        Grid.Column="1"
+                                        Grid.Row="0">
+                                <Image Source="people.png"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center"
+                                      Aspect="Fill"
+                                      HeightRequest="50"
+                                      WidthRequest="50" 
+                               />
+                            </StackLayout>
 
-                                <Label x:Name="LblPreparationTime"
-                                       TextColor="White"
-                                       Grid.Column="2"/>
-                                <!--</StackLayout>-->
+                            <Label x:Name="LblPeople"
+                                   VerticalTextAlignment="Center"
+                                  HorizontalTextAlignment="Center"
+                                  TextColor="Black"
+                                  Grid.Column="1"
+                                  Grid.Row="1"/>
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center"
+                                        Grid.Column="2"
+                                        Grid.Row="0">
+                                <Image Source="clock.png"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center"
+                                      Aspect="Fill"
+                                      HeightRequest="50"
+                                      WidthRequest="50" 
+                               />
+                            </StackLayout>
+
+                            <Label x:Name="LblPreparationTime"
+                                   VerticalTextAlignment="Center"
+                                       TextColor="Black"
+                                       Grid.Column="2"
+                                       Grid.Row="1"
+                                       HorizontalTextAlignment="Center"/>
                         </Grid>
 
                         <Label Text="Opis:"
                                FontSize="Medium"
                                Margin="0,20,0,0"
-                               TextColor="White" />
+                               TextColor="Black" />
 
                         <Label x:Name="LblDescription"
                                Margin="0,20,0,0"
-                               TextColor="White" />
+                               TextColor="Black" />
 
                         <BoxView BackgroundColor="#8B93A6"
                                  HeightRequest="1" />
 
                         <!-- Dodać liste składników-->
                         <Label Text="Składniki"
-                               TextColor="White" />
+                               TextColor="Black" />
                         <CollectionView x:Name="CvIngredients" HeightRequest="250">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -125,11 +146,14 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="1" 
-                                               Text="{Binding name}"/>
+                                               Text="{Binding name}"
+                                               TextColor="Black"/>
                                         <Label Grid.Column="2"
-                                               Text="Ilość: "/>
+                                               Text="Ilość: "
+                                               TextColor="Black"/>
                                         <Label Grid.Column="3"
-                                               Text="{Binding amount}"/>
+                                               Text="{Binding amount}"
+                                               TextColor="Black"/>
                                         <Label Grid.Column="4"
                                                Text="{Binding amountDesc}"/>
                                     </Grid>
@@ -141,7 +165,7 @@
                         <BoxView BackgroundColor="#8B93A6"
                                  HeightRequest="1" />
                         <Label Text="Przygotowanie:"
-                               TextColor="White" />
+                               TextColor="Black" />
                         <CollectionView x:Name="LvPreparationStep" HeightRequest="350">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -157,15 +181,15 @@
                                         <Label Grid.Column="0"
                                                Grid.Row="0"
                                                Text="Krok: "
-                                               TextColor="White"/>
+                                               TextColor="Black"/>
                                         <Label Grid.Column="1"
                                                Grid.Row="0"
                                                Text="{Binding stepNumber}"
-                                               TextColor="White"/>
+                                               TextColor="Black"/>
                                         <Label  Grid.Column="1"
                                                 Grid.Row="1"
                                                 Text="{Binding text}"
-                                                TextColor="White"/>
+                                                TextColor="Black"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

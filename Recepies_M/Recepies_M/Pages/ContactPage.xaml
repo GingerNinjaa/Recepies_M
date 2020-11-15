@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="Recepies_M.Pages.ContactPage">
     <ContentPage.Content>
         <StackLayout>
+
+
             <Grid Margin="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -12,6 +15,8 @@
                 </Grid.ColumnDefinitions>
                 <Image Source="backicon.png"
                        Grid.Column="0"
+                       HeightRequest="25"
+                       WidthRequest="25"
                        HorizontalOptions="Center">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_OnTapped" />
@@ -24,17 +29,29 @@
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center" />
             </Grid>
+
+            <forms:AnimationView 
+                Animation="social-media-animation.json"
+                AutoPlay="True" 
+                Loop="True"
+                HeightRequest="250"
+                WidthRequest="250"
+                BackgroundColor="Transparent"/>
+
+
+
             <Label Margin="20"
-                   Text="For further support you can call our helpline using the option below"
+                   Text="Podziel się z nami swoimi przemyśleniami dotyczacymi aplikacji"
                    TextColor="White"
                    FontSize="Body" />
             <Button x:Name="BtnCall"
                     Margin="50"
-                    Text="Call 36656656"
+                    Text="Wyślij email"
                     BackgroundColor="White"
                     TextColor="Black"
                     FontSize="Medium"
-                    CornerRadius="25" />
+                    CornerRadius="25" 
+                    Clicked="BtnCall_OnClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
