@@ -85,6 +85,8 @@
     <AndroidAsset Include="Assets\4762-food-carousel.json" />
     <AndroidAsset Include="Assets\28452-skipppro-login-animation.json" />
     <AndroidAsset Include="Assets\get_in_touch.json" />
+    <AndroidAsset Include="Assets\healthy.json" />
+    <AndroidAsset Include="Assets\35625-food-choose.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

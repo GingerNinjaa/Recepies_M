@@ -3,25 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="Recepies_M.Pages.SignupPage"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout Margin="20"
-                     Spacing="15">
+        <ScrollView>
+            <StackLayout Margin="20"
+                         Spacing="15">
             <Label Text="Załóż nowe konto"
                    TextColor="White"
                    VerticalOptions="Start"
                    HorizontalOptions="CenterAndExpand"
                    FontSize="Title" />
-            <Image Source="adduser.png"
-                   Margin="0,40,0,0"
-                   HorizontalOptions="Center"
-                   HeightRequest="80"
-                   WidthRequest="80" />
-            <Label Text="Let's get started"
-                   Margin="0,40,0,0"
+
+            <forms:AnimationView 
+                Animation="35625-food-choose.json"
+                AutoPlay="True"
+                Loop="True"
+                HeightRequest="250"
+                WidthRequest="250"
+                BackgroundColor="Transparent"/>
+
+
+            <Label Text="Zaczynajmy!"
+                   Margin="0,30,0,0"
                    TextColor="White"
                    VerticalOptions="Start"
                    FontSize="Large"
@@ -65,13 +72,20 @@
                 </Label>
             </StackLayout>
 
-            <Image Source="signup.png"
-                   Margin="0,40,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="ImgSignup" Tapped="ImgSignup_OnTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-
-        </StackLayout>
+            <Button Text="Register"    
+                    x:Name="BtnRegister"
+                    FontFamily="Lobster"
+                    HeightRequest="60"
+                    WidthRequest="50"
+                    CornerRadius="40"                                  
+                    Margin="0,30,0,0"                   
+                    TextColor="White"                  
+                    BackgroundColor="Transparent" 
+                    BorderWidth="2"
+                    BorderColor="White"
+                    Command="{Binding OpenMenuPage}"
+                    Clicked="BtnRegister_OnClicked"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

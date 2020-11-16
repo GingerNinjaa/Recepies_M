@@ -13,8 +13,6 @@
                      RefreshColor="Teal"
                      Command="{Binding RefreshCommand}">
             <ScrollView>
-
-
                 <Grid>
                     <Grid Margin="15,15,15,0">
                         <Grid.RowDefinitions>
@@ -36,6 +34,7 @@
                         <Label Text="PRZEPISY"
                        TextColor="White"
                        HorizontalOptions="Center"
+                       FontFamily="Lobster"
                        FontSize="Title"
                        Grid.Column="1" />
                         <Image Source="search.png"
@@ -95,6 +94,7 @@
                                              Spacing="10"
                                              Grid.Row="1">
                                             <Label TextColor="White"
+                                                   FontFamily="Lobster"
                                            Text="{Binding title}"/>
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -113,11 +113,13 @@
                                                Padding="8"
                                                CornerRadius="30">
                                                     <Label TextColor="White"
+                                                           FontFamily="Lobster"
                                                   Text="{Binding category}" />
                                                 </Frame>
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <Label TextColor="White" 
+                                                       FontFamily="Lobster"
                                                Text="{Binding difficulty}"/>
                                                 <Image Source="star.png"
                                                VerticalOptions="Center"
@@ -126,8 +128,10 @@
                                                WidthRequest="20" />
                                             </StackLayout>
                                             <Label TextColor="White" 
+                                                   FontFamily="Lobster"
                                            Text="{Binding people, StringFormat='Danie dla {0} osób'}"/>
                                             <Label TextColor="White"
+                                                   FontFamily="Lobster"
                                            Text="{Binding preparationTime, StringFormat='Czas przygotowania: {0} min'} "/>
                                         </StackLayout>
                                     </Grid>
@@ -149,11 +153,13 @@
                                  Spacing="0"
                                  HeightRequest="120">
                                 <Label Text="tu bedzie ikonka usera"
+                                       FontFamily="Lobster"
                                FontSize="Large"
                                HorizontalTextAlignment="Center"
                                TextColor="White"
                                Margin="20,30,20,0" />
                                 <Label x:Name="LblUserName"
+                                       FontFamily="Lobster"
                                FontSize="Small"
                                TextColor="White"
                                Margin="20,10,20,0" />
@@ -165,6 +171,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                                 <Label Text="Moje konto"
+                                       FontFamily="Lobster"
                                TextColor="White"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
@@ -180,6 +187,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                                 <Label Text="About"
+                                       FontFamily="Lobster"
                                TextColor="White"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
@@ -189,13 +197,30 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Spacing="30"
+                                         Orientation="Horizontal"
+                                         Margin="20,0,0,0">
+                                <Image Source="about.png"
+                                       HeightRequest="30"
+                                       WidthRequest="30" />
+                                <Label Text="Dodaj"
+                                       FontFamily="Lobster"
+                                       TextColor="White"
+                                       HeightRequest="50"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="20" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TapAdd" Tapped="TapAdd_OnTapped" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
                                 <Image Source="contact.png"
-                               HeightRequest="30"
+                                       HeightRequest="30"
                                WidthRequest="30" />
                                 <Label Text="Contact"
                                TextColor="White"
+                               FontFamily="Lobster"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -210,6 +235,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                                 <Label Text="Settings"
+                                       FontFamily="Lobster"
                                TextColor="White"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"

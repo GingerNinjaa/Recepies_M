@@ -84,5 +84,10 @@ namespace Recepies_M.Pages
         {
             await Navigation.PushModalAsync(new AccountPage());
         }
+
+        private async void TapAdd_OnTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new DecisionPage());
+        }
     }
 }

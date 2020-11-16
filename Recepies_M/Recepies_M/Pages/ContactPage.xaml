@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             x:Class="Recepies_M.Pages.ContactPage">
+             x:Class="Recepies_M.Pages.ContactPage"
+             BackgroundColor="Black">
+    
     <ContentPage.Content>
         <StackLayout>
 
@@ -24,6 +26,7 @@
                 </Image>
                 <Label Grid.Column="1"
                        TextColor="White"
+                       FontFamily="Lobster"
                        Text="Contact Us"
                        FontSize="Large"
                        FontAttributes="Bold"
@@ -38,14 +41,16 @@
                 WidthRequest="250"
                 BackgroundColor="Transparent"/>
 
-
-
             <Label Margin="20"
                    Text="Podziel się z nami swoimi przemyśleniami dotyczacymi aplikacji"
+                   FontFamily="Lobster"
                    TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
                    FontSize="Body" />
             <Button x:Name="BtnCall"
                     Margin="50"
+                    FontFamily="Lobster"
                     Text="Wyślij email"
                     BackgroundColor="White"
                     TextColor="Black"

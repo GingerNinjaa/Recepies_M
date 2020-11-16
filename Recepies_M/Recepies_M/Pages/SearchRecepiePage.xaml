@@ -63,6 +63,7 @@
                                    Source="{Binding imageUrl}"/>
                             <Label FontSize="Medium"
                                    BackgroundColor="Black"
+                                   FontFamily="Lobster"
                                    Grid.Column="1"
                                    VerticalOptions="Center" 
                                    Text="{Binding title}"/>

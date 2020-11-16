@@ -36,6 +36,7 @@
                     <StackLayout Margin="0,-50,0,0">
                         <Label x:Name="LblTitle"
                                TextColor="Black"
+                               FontFamily="Lobster"
                                FontSize="Medium"
                                VerticalOptions="Center"
                                HorizontalTextAlignment="Center"
@@ -48,6 +49,7 @@
                                    Padding="8"
                                    CornerRadius="30">
                                 <Label TextColor="Black"
+                                       FontFamily="Lobster"
                                        x:Name="LblCategory"/>
                             </Frame>
                         </StackLayout>
@@ -94,6 +96,7 @@
                             </StackLayout>
 
                             <Label x:Name="LblPeople"
+                                   FontFamily="Lobster"
                                    VerticalTextAlignment="Center"
                                   HorizontalTextAlignment="Center"
                                   TextColor="Black"
@@ -115,6 +118,7 @@
                             <Label x:Name="LblPreparationTime"
                                    VerticalTextAlignment="Center"
                                        TextColor="Black"
+                                   FontFamily="Lobster"
                                        Grid.Column="2"
                                        Grid.Row="1"
                                        HorizontalTextAlignment="Center"/>
@@ -122,10 +126,12 @@
 
                         <Label Text="Opis:"
                                FontSize="Medium"
+                               FontFamily="Lobster"
                                Margin="0,20,0,0"
                                TextColor="Black" />
 
                         <Label x:Name="LblDescription"
+                               FontFamily="Lobster"
                                Margin="0,20,0,0"
                                TextColor="Black" />
 
@@ -134,6 +140,7 @@
 
                         <!-- Dodać liste składników-->
                         <Label Text="Składniki"
+                               FontFamily="Lobster"
                                TextColor="Black" />
                         <CollectionView x:Name="CvIngredients" HeightRequest="250">
                             <CollectionView.ItemTemplate>
@@ -146,15 +153,19 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <Label Grid.Column="1" 
+                                               FontFamily="Lobster"
                                                Text="{Binding name}"
                                                TextColor="Black"/>
                                         <Label Grid.Column="2"
+                                               FontFamily="Lobster"
                                                Text="Ilość: "
                                                TextColor="Black"/>
                                         <Label Grid.Column="3"
+                                               FontFamily="Lobster"
                                                Text="{Binding amount}"
                                                TextColor="Black"/>
                                         <Label Grid.Column="4"
+                                               FontFamily="Lobster"
                                                Text="{Binding amountDesc}"/>
                                     </Grid>
                                 </DataTemplate>
@@ -165,6 +176,7 @@
                         <BoxView BackgroundColor="#8B93A6"
                                  HeightRequest="1" />
                         <Label Text="Przygotowanie:"
+                               FontFamily="Lobster"
                                TextColor="Black" />
                         <CollectionView x:Name="LvPreparationStep" HeightRequest="350">
                             <CollectionView.ItemTemplate>
@@ -180,14 +192,17 @@
                                         </Grid.RowDefinitions>
                                         <Label Grid.Column="0"
                                                Grid.Row="0"
+                                               FontFamily="Lobster"
                                                Text="Krok: "
                                                TextColor="Black"/>
                                         <Label Grid.Column="1"
                                                Grid.Row="0"
+                                               FontFamily="Lobster"
                                                Text="{Binding stepNumber}"
                                                TextColor="Black"/>
                                         <Label  Grid.Column="1"
                                                 Grid.Row="1"
+                                                FontFamily="Lobster"
                                                 Text="{Binding text}"
                                                 TextColor="Black"/>
                                     </Grid>

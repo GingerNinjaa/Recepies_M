@@ -34,14 +34,13 @@
                         </Image>
                     </Grid>
 
-    <forms:AnimationView 
-        Animation="food-carousel.json"
-        AutoPlay="True" 
-        Loop="True"
-        HeightRequest="250"
-        WidthRequest="250"
-        BackgroundColor="Transparent"/>
-
+                    <forms:AnimationView 
+                        Animation="food-carousel.json"
+                         AutoPlay="True" 
+                         Loop="True"
+                         HeightRequest="250"
+                         WidthRequest="250"
+                         BackgroundColor="Transparent"/>
 
                     <Frame x:Name="FrEdit"  
                            HeightRequest="150" 
@@ -63,24 +62,26 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label x:Name="LblUserName"
-                               Grid.Column="0"
-                               Grid.Row="0"
-                               TextColor="Black"
-                               HorizontalOptions="End"
-                               FontSize="Title"
-                               Opacity="1"
-                               Text="Nazwa:"/>
+                                         Grid.Column="0"
+                                         Grid.Row="0"
+                                         TextColor="Black"
+                                         HorizontalOptions="End"
+                                         FontSize="Title"
+                                         Opacity="1"
+                                         Text="Nazwa:"/>
                                     <Label x:Name="LblUserNameValue"
-						   Grid.Column="1"
-						   Grid.Row="0"
-						   TextColor="Black"
-						   HorizontalOptions="Start"
-						   FontSize="Title"
-						   Opacity="1"
+                                           Grid.Column="1"
+						                  Grid.Row="0"
+                                         FontFamily="Lobster"
+						                 TextColor="Black"
+						                HorizontalOptions="Start"
+						                FontSize="Title"
+						                Opacity="1"
                            Text="{Binding Name}"/>
                                     <Label x:Name="LblEmail"
                                            Grid.Column="0"
                                            Grid.Row="1"
+                                           FontFamily="Lobster"
                                            TextColor="Black"
                                            HorizontalOptions="End"
                                            FontSize="Title"
@@ -89,6 +90,7 @@
                                     <Label x:Name="LblEmailValue"
 							                Grid.Column="1"
 							                Grid.Row="1"
+                                            FontFamily="Lobster"
 							                TextColor="Black"
 							                FontSize="Title"
 							                HorizontalOptions="Start"
@@ -105,6 +107,7 @@
                                 <Button x:Name="BtEdytuj"
                                     Text="Edytuj"
                                     BorderRadius="30"
+                                    FontFamily="Lobster"
                                     TextColor="Black"
                                     BorderColor="Black"
                                     BorderWidth="2"
@@ -128,6 +131,7 @@
                                    Margin="0,10,0,0"
                                    Grid.Column="0"
                                    Grid.Row="0"
+                                   FontFamily="Lobster"
                                    TextColor="Black"
                                    HorizontalOptions="End"
                                    FontSize="Title"
@@ -147,6 +151,7 @@
                                        Margin="0,10,0,0"
                                    Grid.Column="0"
                                    Grid.Row="1"
+                                       FontFamily="Lobster"
                                    TextColor="Black"
                                    HorizontalOptions="End"
                                    FontSize="Title"
@@ -160,6 +165,7 @@
                                 BorderColor="Black">
                                         <Entry x:Name="EntEmail"
                                            TextColor="Black"
+                                           FontFamily="Lobster"
                                            BackgroundColor="Red"/>
                                     </Frame>
                                 </Grid>
@@ -175,6 +181,7 @@
                                     Text="Close"
                                     BorderRadius="30"
                                     WidthRequest="150"
+                                    FontFamily="Lobster"
                                     Margin="20,20,5,0"
                                     TextColor="Black"
                                     BorderColor="Black"
@@ -186,6 +193,7 @@
                                     Text="Edit"
                                     BorderRadius="30"
                                     WidthRequest="150"
+                                    FontFamily="Lobster"
                                     Margin="5,20,20,0"
                                     TextColor="Black"
                                     BorderColor="Black"
@@ -203,6 +211,7 @@
                                 <Button x:Name="BtClose"
                                     Text="Close"
                                     BorderRadius="30"
+                                    FontFamily="Lobster"
                                     TextColor="Black"
                                     BorderColor="Black"
                                     BorderWidth="2"
@@ -221,6 +230,7 @@
                             <Label TextColor="Black"
                                     Margin="0,0,0,10"
                                      VerticalOptions="Center"
+                                    FontFamily="Lobster"
                                     FontSize="Title"
                                     HorizontalTextAlignment="Center"
                                    Text="Twoje przepsy"/>
@@ -235,6 +245,7 @@
                                             <Label TextColor="Black"
                                        Opacity="1"
                                        VerticalOptions="Center" 
+                                       FontFamily="Lobster"
                                        HorizontalTextAlignment="Center"
                                        FontSize="Medium"
                                        Text="{Binding title}"/>

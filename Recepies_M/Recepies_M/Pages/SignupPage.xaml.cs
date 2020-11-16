@@ -17,24 +17,25 @@ namespace Recepies_M.Pages
             InitializeComponent();
         }
 
-        private async void ImgSignup_OnTapped(object sender, EventArgs e)
-        {
-           var responce= await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
-            //Jeśli wystąpo poprawna rejestracja 
-           if (responce)
-           {
-               await DisplayAlert("Witaj", "Twoje konto zostało utworzone", "Ok");
-               await Navigation.PushModalAsync(new LoginPage());
-           }
-           else
-           {
-               await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
-            }
-        }
-
         private async void LblLogin_OnTapped(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new LoginPage());
+        }
+
+
+        private async void BtnRegister_OnClicked(object sender, EventArgs e)
+        {
+            var responce = await ApiService.RegisterUser(EntName.Text, EntEmail.Text, EntPassword.Text);
+            //Jeśli wystąpo poprawna rejestracja 
+            if (responce)
+            {
+                await DisplayAlert("Witaj", "Twoje konto zostało utworzone", "Ok");
+                await Navigation.PushModalAsync(new LoginPage());
+            }
+            else
+            {
+                await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+            }
         }
     }
 }
