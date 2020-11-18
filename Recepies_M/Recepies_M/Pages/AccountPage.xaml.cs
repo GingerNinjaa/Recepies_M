@@ -44,5 +44,25 @@ namespace Recepies_M.Pages
             this.SVEdit.IsVisible = false;
             this.SlOption.IsVisible = false;
         }
+
+        private async void BtEdit_OnClicked(object sender, EventArgs e)
+        {
+            int _UserId = Preferences.Get("userId", 0);
+            var responce = await ApiService.EditUser(_UserId,EntName.Text, EntEmail.Text, EntPassword.Text);
+
+            if (responce)
+            {
+                await DisplayAlert("Witaj", "Twoje dane zostały zmienione. Zostaniesz teraz wylogowany.", "Ok");
+
+                Preferences.Set("accessToken", String.Empty);
+                Preferences.Set("tokenExpirationTime", 0);
+
+                Application.Current.MainPage = new LoginPage();
+            }
+            else
+            {
+                await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+            }
+        }
     }
 }

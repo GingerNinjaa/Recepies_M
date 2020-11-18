@@ -51,7 +51,7 @@
                            HasShadow="True">
                         <StackLayout>
 
-                            <ScrollView Orientation="Horizontal">
+                            <ScrollView Orientation="Horizontal" HeightRequest="110">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
@@ -117,13 +117,16 @@
 
                             <ScrollView x:Name="SVEdit"
                                     Orientation="Horizontal"
-                                    IsVisible="False">
-                                <Grid Margin="10,50,0,0">
+                                    IsVisible="False"
+                                    HeightRequest="300"
+                                    Padding="0,0,0,0">
+                                <Grid Margin="10,10,0,10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="6*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
@@ -136,47 +139,65 @@
                                    HorizontalOptions="End"
                                    FontSize="Title"
                                    Opacity="1"
-                                   Text="lalal"/>
+                                   Text="Nazwa:"/>
                                     <Frame 
-                                Grid.Column="1"
-                                Grid.Row="0"
-                                Padding="0"
-                                CornerRadius="20"
-                                BorderColor="Black">
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        Padding="0"
+                                        CornerRadius="20"
+                                        BorderColor="Black">
                                         <Entry x:Name="EntName"
-                                           TextColor="Black"
-                                BackgroundColor="Red"/>
+                                           TextColor="Black"/>
                                     </Frame>
                                     <Label x:Name="cc"
                                        Margin="0,10,0,0"
-                                   Grid.Column="0"
-                                   Grid.Row="1"
+                                         Grid.Column="0"
+                                         Grid.Row="1"
                                        FontFamily="Lobster"
-                                   TextColor="Black"
-                                   HorizontalOptions="End"
-                                   FontSize="Title"
-                                   Opacity="1"
-                                   Text="Email:"/>
+                                        TextColor="Black"
+                                        HorizontalOptions="End"
+                                         FontSize="Title"
+                                         Opacity="1"
+                                        Text="Email:"/>
                                     <Frame 
-                                Grid.Column="1"
-                                   Grid.Row="1"
-                                Padding="0"
-                                CornerRadius="20"
-                                BorderColor="Black">
+                                        Grid.Column="1"
+                                         Grid.Row="1"
+                                        Padding="0"
+                                        CornerRadius="20"
+                                        BorderColor="Black">
                                         <Entry x:Name="EntEmail"
                                            TextColor="Black"
+                                           FontFamily="Lobster"/>
+                                    </Frame>
+                                    <Label Margin="0,10,0,0"
+                                           Grid.Column="0"
+                                           Grid.Row="2"
                                            FontFamily="Lobster"
-                                           BackgroundColor="Red"/>
+                                           TextColor="Black"
+                                           HorizontalOptions="End"
+                                           FontSize="Title"
+                                           Opacity="1"
+                                           Text="Hasło:"/>
+                                    <Frame 
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Padding="0"
+                                        CornerRadius="20"
+                                        BorderColor="Black">
+                                        <Entry x:Name="EntPassword"
+                                               TextColor="Black"
+                                               FontFamily="Lobster"/>
                                     </Frame>
                                 </Grid>
                             </ScrollView>
+
                             <StackLayout  x:Name="SlOption"
-                                      Orientation="Horizontal"
+                                          Orientation="Horizontal"
                                       
-                                      Margin="-10,30,0,0"
-                                      HorizontalOptions="Center"
-                                      Spacing="0"
-                                      IsVisible="False">
+                                          Margin="-10,0,0,0"
+                                          HorizontalOptions="Center"
+                                          Spacing="0"
+                                          IsVisible="False">
                                 <Button x:Name="BtClear"
                                     Text="Close"
                                     BorderRadius="30"
@@ -199,7 +220,7 @@
                                     BorderColor="Black"
                                     BorderWidth="2"
                                     BackgroundColor="Green"
-                                    Clicked="BtClose_OnClicked"/>
+                                    Clicked="BtEdit_OnClicked"/>
                             </StackLayout>
 
                             <StackLayout  x:Name="SlClose"
@@ -222,7 +243,6 @@
                     </Frame>
 
                     <Frame CornerRadius="40"
-                           
                            Margin="15,80,15,50"
                            HeightRequest="250"
                            BackgroundColor="#9Cffffff">

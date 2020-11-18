@@ -55,16 +55,18 @@ namespace Recepies_M.ViewModels
             GetUserData();
 
             var recepieSearchList = await ApiService.GetAllRecepiesPartialById(this._UserId, 1, 5);
+           // if (recepieSearchList.Capacity == 0)
+            //{
+                foreach (var recepie in recepieSearchList)
+                {
+                    RecepiesPartials.Add(recepie);
+                }
 
-            foreach (var recepie in recepieSearchList)
-            {
-                RecepiesPartials.Add(recepie);
-            }
-
-            for (int i = 1; i <= recepieSearchList.Count; i++)
-            {
-                RecepiesPartials.RemoveAt(0);
-            }
+                for (int i = 1; i <= recepieSearchList.Count; i++)
+                {
+                    RecepiesPartials.RemoveAt(0);
+                }
+           // }
 
             IsRefreshing = false;
         }
@@ -81,10 +83,12 @@ namespace Recepies_M.ViewModels
 
             var recepieSearchList = await ApiService.GetAllRecepiesPartialById(this._UserId, 1, 5);
 
+
             foreach (var recepie in recepieSearchList)
             {
                 RecepiesPartials.Add(recepie);
             }
+
         }
 
         #region INotifyPropertyChanged

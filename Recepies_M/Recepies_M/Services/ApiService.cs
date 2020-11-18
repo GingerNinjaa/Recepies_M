@@ -115,6 +115,34 @@ namespace Recepies_M.Services
             return JsonConvert.DeserializeObject<List<FindRecepie>>(response);
         }
 
- 
+        public static async Task<bool> EditUser( int id, string name, string email, string password)
+        {
+            var user = new User()
+            {
+                Id = id,
+                Name = name,
+                Email = email,
+                Password = password
+            };
+
+            var httpClient = new HttpClient();
+            var json = JsonConvert.SerializeObject(user);
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl + "users/Edit", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
     }
 }
