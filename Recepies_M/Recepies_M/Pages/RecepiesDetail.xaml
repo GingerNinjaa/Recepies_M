@@ -152,21 +152,22 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="1" 
+                                        <Label Grid.Column="0" 
                                                FontFamily="Lobster"
                                                Text="{Binding name}"
                                                TextColor="Black"/>
-                                        <Label Grid.Column="2"
+                                        <Label Grid.Column="1"
                                                FontFamily="Lobster"
                                                Text="Ilość: "
                                                TextColor="Black"/>
-                                        <Label Grid.Column="3"
+                                        <Label Grid.Column="2"
                                                FontFamily="Lobster"
                                                Text="{Binding amount}"
                                                TextColor="Black"/>
-                                        <Label Grid.Column="4"
+                                        <Label Grid.Column="3"
                                                FontFamily="Lobster"
-                                               Text="{Binding amountDesc}"/>
+                                               Text="{Binding amountDesc}"
+                                               TextColor="Black"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>

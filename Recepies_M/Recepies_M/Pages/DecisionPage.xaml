@@ -4,7 +4,8 @@
              x:Class="Recepies_M.Pages.DecisionPage"
              BackgroundColor="Black">
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <StackLayout>
+            <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="Auto" />
@@ -23,5 +24,40 @@
             </Image>
         </Grid>
 
+            <Button x:Name="AddRecepieBtn"
+                    Text="Dodaj nowy przepis"                  
+                    FontFamily="Lobster"
+                    HeightRequest="60"
+                    WidthRequest="50"
+                    CornerRadius="40"                                  
+                    Margin="0,30,0,0"                   
+                    TextColor="White"                  
+                    BackgroundColor="Transparent" 
+                    BorderWidth="2"
+                    BorderColor="White"
+                    Clicked="AddRecepieBtn_OnClicked"/>
+
+            <Button Text="Login"                  
+                    FontFamily="Lobster"
+                    HeightRequest="60"
+                    WidthRequest="50"
+                    CornerRadius="40"                                  
+                    Margin="0,30,0,0"                   
+                    TextColor="White"                  
+                    BackgroundColor="Transparent" 
+                    BorderWidth="2"
+                    BorderColor="White"/>
+
+            <Button Text="Login"                  
+                    FontFamily="Lobster"
+                    HeightRequest="60"
+                    WidthRequest="50"
+                    CornerRadius="40"                                  
+                    Margin="0,30,0,0"                   
+                    TextColor="White"                  
+                    BackgroundColor="Transparent" 
+                    BorderWidth="2"
+                    BorderColor="White"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -22,5 +22,11 @@ namespace Recepies_M.Pages
         {
             Navigation.PopModalAsync();
         }
+
+
+        private async void AddRecepieBtn_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new AddRecepiePage());
+        }
     }
 }

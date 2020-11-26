@@ -143,6 +143,32 @@ namespace Recepies_M.Services
 
         }
 
+        public static async Task<bool> AddRecepie(Recepies recepies, List<Ingredient> ingredient, List<PreparationStep> preparationSteps)
+        {
+            await TokenValidator.Check();
+            var httpClient = new HttpClient();
+
+           
+
+
+            var recepiesContext = new MultipartFormDataContent
+            {
+                {new StringContent(recepies.title),"Title"},
+                {new StringContent(recepies.description),"Description"},
+                {new StringContent(recepies.preparationTime.ToString()),"PreparationTime"},
+                {new StringContent(recepies.cookingTime.ToString()),"CookingTime"},
+                {new StringContent(recepies.people.ToString()),"People"},
+                {new StringContent(recepies.difficulty),"Difficulty"},
+                {new StringContent(recepies.category),"Category"},
+            };
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+            var response = await httpClient.PostAsync(AppSettings.ApiUrl +
+                                                           "Recipes/AddRecepie", recepiesContext);
+
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
 
     }
 }

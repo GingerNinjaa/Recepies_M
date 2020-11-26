@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Recepies_M.Pages.AddRecepiePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Image Source="backicon"
+                       Margin="20,20,0,0"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start"
+                       HeightRequest="25"
+                       WidthRequest="25"
+                       Grid.Row="0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <Frame 
+                   IsClippedToBounds="False"
+                   BackgroundColor="#9Cffffff"
+                   Margin="15,0,15,0"
+                   CornerRadius="40"
+                   HasShadow="True">
+                    
+                <StackLayout>
+                    <Entry Placeholder="Nazwa dania"/>
+                    <Entry Placeholder="Opis"/>
+                    <Entry Placeholder="Czas Przygotowania"/>
+                    <Entry Placeholder="Czas Gotowania"/>
+                    <Entry Placeholder="Dla ilu osób"/>
+                    <Entry Placeholder="Poziom trudności"/>
+                    <Entry Placeholder="Kategoria"/>
+                </StackLayout>
+
+            </Frame>
+
+                <Frame 
+                    IsClippedToBounds="False"
+                    BackgroundColor="#9Cffffff"
+                    Margin="15,0,15,0"
+                    CornerRadius="40"
+                    HasShadow="True">
+
+                    <StackLayout >
+                        <Label Text="Dodaj Składniki"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Entry x:Name="EntryName"
+                            Placeholder="Nazwa"/>
+
+                        <Entry x:Name="EntryAmount" 
+                               Placeholder="Ilość"
+                               Keyboard="Numeric"/>
+
+                        <Entry x:Name="EntryAmountDesc"
+                               Placeholder="Jednostka miary"/>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                            <Button Text="Dodaj"            
+                                    x:Name="AddIngBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White" 
+                                    Clicked="AddIngBtn_OnClicked"/>
+                            <Button Text="Edytuj" 
+                                    x:Name="EditIngBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White"
+                                    Clicked="EditIngBtn_OnClicked"/>
+                            <Button Text="Usuń" 
+                                    x:Name="DeleteIngBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White"
+                                    Clicked="DeleteIngBtn_OnClicked"/>
+                        </StackLayout>
+
+                        <!-- Dodać liste składników-->
+                        <Label Text="Dodaj Składniki"
+                               FontFamily="Lobster"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <CollectionView x:Name="CvIngredients" HeightRequest="200"  ItemsSource="{Binding Iingredients}" SelectionMode="Single" SelectionChanged="CvIngredients_OnSelectionChanged" >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate >
+                                    <Grid Padding="10" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" 
+                                               FontFamily="Lobster"
+                                               Text="{Binding name}"
+                                               TextColor="Black"/>
+                                        <Label Grid.Column="1"
+                                               FontFamily="Lobster"
+                                               Text="Ilość: "
+                                               TextColor="Black"/>
+                                        <Label Grid.Column="2"
+                                               FontFamily="Lobster"
+                                               Text="{Binding amount}"
+                                               TextColor="Black"
+                                               />
+                                        <Label Grid.Column="3"
+                                               FontFamily="Lobster"
+                                               Text="{Binding amountDesc}"
+                                               TextColor="Black"/>
+                                        
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Frame>
+
+                <Frame 
+                    IsClippedToBounds="False"
+                    BackgroundColor="#9Cffffff"
+                    Margin="15,0,15,0"
+                    CornerRadius="40"
+                    HasShadow="True">
+
+                    <StackLayout>
+                        <Label Text="Dodaj kroki przygotowania"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Entry x:Name="EntryStepNumber"
+                               Placeholder="Numer kroku"
+                               Keyboard="Numeric"/>
+
+                        <Entry x:Name="EntryText"
+                               Placeholder="Text"/>
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                            <Button Text="Dodaj"            
+                                    x:Name="AddPrepBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White" 
+                                    Clicked="AddPrepBtn_OnClicked"/>
+                            <Button Text="Edytuj" 
+                                    x:Name="EditPrepBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White"
+                                    Clicked="EditPrepBtn_OnClicked"/>
+                            <Button Text="Usuń" 
+                                    x:Name="DeletePrepBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White"
+                                    Clicked="DeletePrepBtn_OnClicked"/>
+                        </StackLayout>
+
+                        <!-- Dodać liste kroków-->
+                        <Label Text="Przygotowanie:"
+                               FontFamily="Lobster"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+
+                        <CollectionView x:Name="CvPreparationStep" HeightRequest="200"  ItemsSource="{Binding PreparationSteps}"  SelectionMode="Single" SelectionChanged="CvPreparationStep_OnSelectionChanged">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Column="0"
+                                               Grid.Row="0"
+                                               FontFamily="Lobster"
+                                               Text="Krok: "
+                                               TextColor="Black"/>
+                                        <Label Grid.Column="1"
+                                               Grid.Row="0"
+                                               FontFamily="Lobster"
+                                               Text="{Binding stepNumber}"
+                                               TextColor="Black"/>
+                                        <Label  Grid.Column="1"
+                                                Grid.Row="1"
+                                                FontFamily="Lobster"
+                                                Text="{Binding text}"
+                                                TextColor="Black"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </StackLayout>
+                   
+
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
