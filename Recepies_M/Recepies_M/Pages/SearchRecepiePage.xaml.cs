@@ -27,6 +27,7 @@ namespace Recepies_M.Pages
 
             var recepieSearchList = await ApiService.FindRecepies(e.NewTextValue.ToLower());
 
+            
             CvRecepiesSearch.ItemsSource = recepieSearchList;
         }
 

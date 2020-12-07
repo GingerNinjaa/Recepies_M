@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Fabric;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
 using Recepies_M.Models;
 using Recepies_M.Settings;
 using Xamarin.Essentials;
@@ -143,32 +145,54 @@ namespace Recepies_M.Services
 
         }
 
-        public static async Task<bool> AddRecepie(Recepies recepies, List<Ingredient> ingredient, List<PreparationStep> preparationSteps)
+        public static async Task<bool> AddRecepie(Recepies recepies)
+        {
+            await TokenValidator.Check();
+            var httpClient = new HttpClient();
+           
+            var json = JsonConvert.SerializeObject(recepies);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+
+
+            var response = await httpClient.PostAsync(AppSettings.ApiUrl +
+                                                           "Recipes/AddRecepie", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
+        }
+
+        public static async Task<bool> AddRecepieIMG(string title, MediaFile mediafile)
         {
             await TokenValidator.Check();
             var httpClient = new HttpClient();
 
-           
-
-
-            var recepiesContext = new MultipartFormDataContent
-            {
-                {new StringContent(recepies.title),"Title"},
-                {new StringContent(recepies.description),"Description"},
-                {new StringContent(recepies.preparationTime.ToString()),"PreparationTime"},
-                {new StringContent(recepies.cookingTime.ToString()),"CookingTime"},
-                {new StringContent(recepies.people.ToString()),"People"},
-                {new StringContent(recepies.difficulty),"Difficulty"},
-                {new StringContent(recepies.category),"Category"},
-            };
-
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.PostAsync(AppSettings.ApiUrl +
-                                                           "Recipes/AddRecepie", recepiesContext);
 
-            if (!response.IsSuccessStatusCode) return false;
-            return true;
+            var recepiesContext = new MultipartFormDataContent();
+
+            recepiesContext.Add(new StringContent(title),"Title");
+            recepiesContext.Add(new StreamContent(mediafile.GetStream()), "Image" , "fdfd");
+            
+
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl +
+                                                      "Recipes/AddRecepieIMG", recepiesContext);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
-
     }
 }

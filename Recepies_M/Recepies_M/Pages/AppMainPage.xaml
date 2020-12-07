@@ -86,7 +86,8 @@
                                                 <Image VerticalOptions="FillAndExpand"
                                                HeightRequest="200"
                                                Aspect="Fill"
-                                               Source="{Binding imageUrl}"/>
+                                               Source="{Binding FullImage}"/>
+                                                <!-- Source="{Binding imageUrl}"/>-->
                                             </Frame>
                                         </StackLayout>
                                         <StackLayout Grid.Column="1"

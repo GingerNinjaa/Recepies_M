@@ -5,48 +5,52 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-            <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <Image Source="backicon"
+                    <Image Source="backicon"
                        Margin="20,20,0,0"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"
                        HeightRequest="25"
                        WidthRequest="25"
                        Grid.Row="0">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-            </Grid>
-
-            <Frame 
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <!--Main Data-->
+                <Frame 
                    IsClippedToBounds="False"
                    BackgroundColor="#9Cffffff"
-                   Margin="15,0,15,0"
+                   Margin="15,30,15,0"
                    CornerRadius="40"
                    HasShadow="True">
-                    
-                <StackLayout>
-                    <Entry Placeholder="Nazwa dania"/>
-                    <Entry Placeholder="Opis"/>
-                    <Entry Placeholder="Czas Przygotowania"/>
-                    <Entry Placeholder="Czas Gotowania"/>
-                    <Entry Placeholder="Dla ilu osób"/>
-                    <Entry Placeholder="Poziom trudności"/>
-                    <Entry Placeholder="Kategoria"/>
-                </StackLayout>
 
-            </Frame>
+                    <StackLayout>
+                        <Label Text="Dodaj główne informacje"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
 
+                        <Entry x:Name ="EntryTitle" Placeholder="Nazwa dania"/>
+                        <Entry x:Name ="EntryDescription" Placeholder="Opis"/>
+                        <Entry x:Name ="EntryPreparationTime" Placeholder="Czas Przygotowania"/>
+                        <Entry x:Name ="EntryCookingTime" Placeholder="Czas Gotowania"/>
+                        <Entry x:Name ="EntryPeople" Placeholder="Dla ilu osób"/>
+                        <Entry x:Name ="EntryDifficulty" Placeholder="Poziom trudności"/>
+                        <Entry x:Name ="EntryCategory" Placeholder="Kategoria"/>
+                    </StackLayout>
+                </Frame>
+                
+                <!--Ingredients-->
                 <Frame 
                     IsClippedToBounds="False"
                     BackgroundColor="#9Cffffff"
-                    Margin="15,0,15,0"
+                    Margin="15,30,15,0"
                     CornerRadius="40"
                     HasShadow="True">
 
@@ -100,9 +104,10 @@
                                FontFamily="Lobster"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"/>
-                        <CollectionView x:Name="CvIngredients" HeightRequest="200"  ItemsSource="{Binding Iingredients}" SelectionMode="Single" SelectionChanged="CvIngredients_OnSelectionChanged" >
+                        <CollectionView x:Name="CvIngredients" HeightRequest="200"  ItemsSource="{Binding Iingredients}" 
+                                        SelectionMode="Single" SelectionChanged="CvIngredients_OnSelectionChanged" >
                             <CollectionView.ItemTemplate>
-                                <DataTemplate >
+                                <DataTemplate>
                                     <Grid Padding="10" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
@@ -128,18 +133,18 @@
                                                FontFamily="Lobster"
                                                Text="{Binding amountDesc}"
                                                TextColor="Black"/>
-                                        
+
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </StackLayout>
                 </Frame>
-
+                <!--PreparationSteps-->
                 <Frame 
                     IsClippedToBounds="False"
                     BackgroundColor="#9Cffffff"
-                    Margin="15,0,15,0"
+                    Margin="15,30,15,30"
                     CornerRadius="40"
                     HasShadow="True">
 
@@ -225,10 +230,62 @@
                         </CollectionView>
 
                     </StackLayout>
-                   
+
 
                 </Frame>
 
+                <Frame 
+                    IsClippedToBounds="False"
+                    BackgroundColor="#9Cffffff"
+                    Margin="15,30,15,30"
+                    CornerRadius="40"
+                    HasShadow="True">
+
+                    <StackLayout>
+                        <Image HorizontalOptions="CenterAndExpand"
+                               Aspect="Fill"
+                               x:Name="ImgAddFromFile">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ImgAdd" Tapped="ImgAdd_OnTapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <StackLayout
+                            Margin="0,15,0,0"
+                            Orientation="Horizontal"
+                            HorizontalOptions="Center">
+                            <Button Text="Z aparatu"            
+                                    x:Name="AddimageCameraBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White" 
+                                    Clicked="AddimageCameraBtn_OnClicked"/>
+                            <Button Text="Z galeri" 
+                                    x:Name="AddimageGalleryaBtn"
+                                    FontFamily="Lobster"
+                                    CornerRadius="40"                                  
+                                    TextColor="White"                  
+                                    BackgroundColor="Transparent" 
+                                    BorderWidth="2"
+                                    BorderColor="White"
+                                    Clicked="AddimageGalleryaBtn_OnClicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Button x:Name="BtAddRecepie"
+                        Text="Dodaj Przepis"
+                        BorderRadius="30"
+                        WidthRequest="150"
+                        FontFamily="Lobster"
+                        Margin="5,20,20,20"
+                        TextColor="Black"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        BackgroundColor="Green"
+                        Clicked="BtAddRecepie_OnClicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

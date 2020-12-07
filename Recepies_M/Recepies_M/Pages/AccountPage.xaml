@@ -260,7 +260,7 @@
                                         <StackLayout>
                                             <Image HeightRequest="150"
                                        Opacity="1"
-                                       Source="{Binding imageUrl}"/>
+                                       Source="{Binding FullImage}"/>
                                             <!--Source="{Binding imageUrl}"-->
                                             <Label TextColor="Black"
                                        Opacity="1"

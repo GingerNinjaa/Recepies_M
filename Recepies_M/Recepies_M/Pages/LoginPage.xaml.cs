@@ -30,6 +30,7 @@ namespace Recepies_M.Pages
 
             if (responce)
             {
+                await DisplayAlert("Witamy", "Zalogowano do aplikacji", "Zaczynamy");
                 Preferences.Set("email", EntEmail.Text);
                 Preferences.Set("password", EntPassword.Text);
 

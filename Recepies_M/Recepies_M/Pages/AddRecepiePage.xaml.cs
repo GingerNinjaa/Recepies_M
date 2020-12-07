@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImageToArray;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Recepies_M.Models;
+using Recepies_M.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Recepies_M.Pages
 {
@@ -17,6 +23,8 @@ namespace Recepies_M.Pages
 
         private Ingredient currentSelectionIngredient;
         private PreparationStep currentSelectionPreparationStep;
+
+        private MediaFile file;
 
         public AddRecepiePage()
         {
@@ -131,6 +139,107 @@ namespace Recepies_M.Pages
             UpdatePreparationSteps();
         }
 
- 
+
+        private async void ImgAdd_OnTapped(object sender, EventArgs e)
+        {
+        }
+
+        private async void AddimageCameraBtn_OnClicked(object sender, EventArgs e)
+        {
+            //var result = await MediaPicker.CapturePhotoAsync();
+
+            //if (result != null)
+            //{
+            //    var stream = await result.OpenReadAsync();
+
+            //    ImgAddFromFile.Source = ImageSource.FromStream(() => stream);
+            //}
+            //ImgAddFromFile.HeightRequest = 200;
+
+            //await CrossMedia.Current.Initialize();
+
+            //if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            //{
+            //    DisplayAlert("No Camera", ":( No camera available.", "OK");
+            //    return;
+            //}
+
+            //var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            //{
+            //    Directory = "Sample",
+            //    Name = "test.jpg"
+            //});
+
+            //if (file == null)
+            //    return;
+
+            //ImgAddFromFile.Source = ImageSource.FromStream(() =>
+            //{
+            //    var stream = file.GetStream();
+            //    return stream;
+            //});
+
+            //ImgAddFromFile.HeightRequest = 200;
+        }
+
+        private async void AddimageGalleryaBtn_OnClicked(object sender, EventArgs e)
+        {
+
+            ImgAddFromFile.HeightRequest = 300;
+
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                DisplayAlert("No Camera", ":( No camera available.", "OK");
+                return;
+            }
+
+             this.file = await CrossMedia.Current.PickPhotoAsync();
+
+            if (file == null)
+                return;
+
+            // image.Source = ImageSource.FromStream(() =>
+            ImgAddFromFile.Source = ImageSource.FromStream(() =>
+            {
+                var stream = file.GetStream();
+                return stream;
+            });
+
+          
+        }
+
+        private async void BtAddRecepie_OnClicked(object sender, EventArgs e)
+        {
+            Recepies  recepies = new Recepies();
+
+          //var ImageArray = FromFile.ToArray(file.GetStream());
+
+            recepies.title = this.EntryTitle.Text;
+            recepies.description = this.EntryDescription.Text;
+            recepies.preparationTime = Int32.Parse(this.EntryPreparationTime.Text);
+            recepies.cookingTime = Int32.Parse(this.EntryCookingTime.Text);
+            recepies.people = Int32.Parse(this.EntryPeople.Text);
+            recepies.difficulty = this.EntryDifficulty.Text;
+            recepies.category = this.EntryCategory.Text;
+            recepies.UserId = Preferences.Get("userId", 0);
+
+            recepies.ingredients = this.Iingredients;
+            recepies.preparationSteps = this.PreparationSteps;
+
+           await ApiService.AddRecepie(recepies);
+           var responce = await ApiService.AddRecepieIMG( recepies.title, this.file);
+
+           if (responce)
+           {
+               await DisplayAlert("Sukces!", "Pomyślnie dodano nowy przepis", "OK");
+               Application.Current.MainPage = new NavigationPage(new AppMainPage());
+           }
+           else
+           {
+               await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+           }
+        }
     }
 }

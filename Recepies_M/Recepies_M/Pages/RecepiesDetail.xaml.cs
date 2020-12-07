@@ -39,7 +39,7 @@ namespace Recepies_M.Pages
 
 
 
-            this.ImgMovie.Source = Recepieses.imageUrl;
+            this.ImgMovie.Source = Recepieses.FullImage;
             this.LblCategory.Text = Recepieses.category;
             this.LblPeople.Text = Recepieses.people.ToString();
             this.LblTitle.Text = Recepieses.title;

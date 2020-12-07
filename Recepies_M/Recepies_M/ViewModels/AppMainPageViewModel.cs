@@ -15,7 +15,7 @@ namespace Recepies_M.ViewModels
     public class AppMainPageViewModel : INotifyPropertyChanged
     {
         bool isRefreshing;
-        private int pageNumber;
+        static int pageNumber =0;
         public ObservableCollection<RecepiesPartial> RecepiesesColection { get; private set; }
 
         public AppMainPageViewModel()
@@ -59,7 +59,11 @@ namespace Recepies_M.ViewModels
         {
             pageNumber++;
 
-            var recepies = await ApiService.GetAllRecepiesPartial(this.pageNumber, 5);
+            var recepies = await ApiService.GetAllRecepiesPartial(pageNumber, 5);
+            if (recepies == null)
+            {
+                pageNumber--;
+            }
             foreach (var recepie in recepies)
             {
                 RecepiesesColection.Add(recepie);

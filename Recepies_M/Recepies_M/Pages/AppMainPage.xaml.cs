@@ -16,7 +16,7 @@ namespace Recepies_M.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppMainPage : ContentPage
     {
-        private int pageNumber = 0;
+       // private int pageNumber = 0;
 
         public AppMainPage()
         {

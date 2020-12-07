@@ -60,8 +60,10 @@
                                    HeightRequest="100"
                                    VerticalOptions="Start"
                                    Grid.Column="0"
-                                   Source="{Binding imageUrl}"/>
-                            <Label FontSize="Medium"
+                                   Source="{Binding FullImage}"/>
+                                
+                                <!--Source="{Binding imageUrl}"/>-->
+                                <Label FontSize="Medium"
                                    BackgroundColor="Black"
                                    FontFamily="Lobster"
                                    Grid.Column="1"
