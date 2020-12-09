@@ -97,6 +97,7 @@
     <AndroidAsset Include="Assets\get_in_touch.json" />
     <AndroidAsset Include="Assets\healthy.json" />
     <AndroidAsset Include="Assets\35625-food-choose.json" />
+    <AndroidAsset Include="Assets\shopping.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

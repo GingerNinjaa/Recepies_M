@@ -37,10 +37,11 @@
                            VerticalTextAlignment="Center"/>
 
                         <Entry x:Name ="EntryTitle" Placeholder="Nazwa dania"/>
-                        <Entry x:Name ="EntryDescription" Placeholder="Opis"/>
-                        <Entry x:Name ="EntryPreparationTime" Placeholder="Czas Przygotowania"/>
-                        <Entry x:Name ="EntryCookingTime" Placeholder="Czas Gotowania"/>
-                        <Entry x:Name ="EntryPeople" Placeholder="Dla ilu osób"/>
+                        <Editor AutoSize="TextChanges" x:Name ="EntryDescription" Placeholder="Opis"/>
+                        <!--<Entry x:Name ="EntryDescription" Placeholder="Opis"/>-->
+                        <Entry x:Name ="EntryPreparationTime" Placeholder="Czas Przygotowania" Keyboard="Numeric"/>
+                        <Entry x:Name ="EntryCookingTime" Placeholder="Czas Gotowania" Keyboard="Numeric"/>
+                        <Entry x:Name ="EntryPeople" Placeholder="Dla ilu osób" Keyboard="Numeric"/>
                         <Entry x:Name ="EntryDifficulty" Placeholder="Poziom trudności"/>
                         <Entry x:Name ="EntryCategory" Placeholder="Kategoria"/>
                     </StackLayout>
