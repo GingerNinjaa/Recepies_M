@@ -5,7 +5,8 @@
              xmlns:viewModels="clr-namespace:Recepies_M.ViewModels;assembly=Recepies_M"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             BackgroundImage="AccountBackground.jpg">
+             
+             BackgroundColor="Black">
     <ContentPage.BindingContext>
         <viewModels:AccountPageViewModel />
     </ContentPage.BindingContext>

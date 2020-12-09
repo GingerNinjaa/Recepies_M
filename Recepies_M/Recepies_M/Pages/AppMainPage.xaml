@@ -153,22 +153,23 @@
                                  VerticalOptions="Center"
                                  Spacing="0"
                                  HeightRequest="120">
-                                <Label Text="tu bedzie ikonka usera"
+                                <Image Source="man.png"
+                                       HeightRequest="60"
+                                       WidthRequest="60" 
+                                       Margin="0,20,0,0"/>
+                                <Label x:Name="lblUserName"
+                                       Text="{Binding userName}"
                                        FontFamily="Lobster"
-                               FontSize="Large"
-                               HorizontalTextAlignment="Center"
-                               TextColor="White"
-                               Margin="20,30,20,0" />
-                                <Label x:Name="LblUserName"
-                                       FontFamily="Lobster"
-                               FontSize="Small"
-                               TextColor="White"
-                               Margin="20,10,20,0" />
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="White"
+                                       HeightRequest="50"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="20" />
                             </StackLayout>
                             <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                                <Image Source="about.png"
+                                <Image Source="user.png"
                                HeightRequest="30"
                                WidthRequest="30" />
                                 <Label Text="Moje konto"
@@ -179,22 +180,6 @@
                                FontSize="20" />
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer x:Name="TapAcount" Tapped="TapAcount_OnTapped"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <StackLayout Spacing="30"
-                                 Orientation="Horizontal"
-                                 Margin="20,0,0,0">
-                                <Image Source="about.png"
-                               HeightRequest="30"
-                               WidthRequest="30" />
-                                <Label Text="About"
-                                       FontFamily="Lobster"
-                               TextColor="White"
-                               HeightRequest="50"
-                               VerticalTextAlignment="Center"
-                               FontSize="20" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="TapAbout" />
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Spacing="30"
@@ -230,24 +215,8 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <StackLayout Spacing="30"
-                                 Orientation="Horizontal"
-                                 Margin="20,0,0,0">
-                                <Image Source="settings.png"
-                               HeightRequest="30"
-                               WidthRequest="30" />
-                                <Label Text="Settings"
-                                       FontFamily="Lobster"
-                               TextColor="White"
-                               HeightRequest="50"
-                               VerticalTextAlignment="Center"
-                               FontSize="20" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="TapSettings" />
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <StackLayout Spacing="30"
-                                 Orientation="Horizontal"
-                                 Margin="20,0,0,0">
+                                         Orientation="Horizontal"
+                                         Margin="20,0,0,0">
                                 <Image Source="logout.png"
                                HeightRequest="30"
                                WidthRequest="30" />

@@ -28,5 +28,15 @@ namespace Recepies_M.Pages
         {
             await Navigation.PushModalAsync(new AddRecepiePage());
         }
+
+        private async void DeleteRecepieBtn_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PickToDeleteRecepiePage());
+        }
+
+        private async void EditRecepieBtn_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new PickToEditRecepiePage());
+        }
     }
 }

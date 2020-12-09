@@ -15,4 +15,8 @@
          which is used to tint widgets -->
     <!--<item name="colorAccent">#FF4081</item>-->
   </style>
+  <style name="ToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize color of navigation drawer icon and back arrow -->
+    <item name="colorControlNormal">#0000</item>
+  </style>
 </resources>

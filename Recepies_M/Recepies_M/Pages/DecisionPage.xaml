@@ -37,7 +37,8 @@
                     BorderColor="White"
                     Clicked="AddRecepieBtn_OnClicked"/>
 
-            <Button Text="Login"                  
+            <Button x:Name="EditRecepieBtn"
+                    Text="Login"                  
                     FontFamily="Lobster"
                     HeightRequest="60"
                     WidthRequest="50"
@@ -46,9 +47,11 @@
                     TextColor="White"                  
                     BackgroundColor="Transparent" 
                     BorderWidth="2"
-                    BorderColor="White"/>
+                    BorderColor="White"
+                    Clicked="EditRecepieBtn_OnClicked"/>
 
-            <Button Text="Login"                  
+            <Button x:Name="DeleteRecepieBtn"
+                    Text="Login"                  
                     FontFamily="Lobster"
                     HeightRequest="60"
                     WidthRequest="50"
@@ -57,7 +60,8 @@
                     TextColor="White"                  
                     BackgroundColor="Transparent" 
                     BorderWidth="2"
-                    BorderColor="White"/>
+                    BorderColor="White"
+                    Clicked="DeleteRecepieBtn_OnClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

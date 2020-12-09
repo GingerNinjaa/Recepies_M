@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Plugin.Media.Abstractions;
+using Recepies_M.Models;
+using Recepies_M.Settings;
+using System;
 using System.Collections.Generic;
-using System.Fabric;
-using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Plugin.Media.Abstractions;
-using Recepies_M.Models;
-using Recepies_M.Settings;
 using Xamarin.Essentials;
 
 namespace Recepies_M.Services
@@ -167,7 +165,6 @@ namespace Recepies_M.Services
             }
             
         }
-
         public static async Task<bool> AddRecepieIMG(string title, MediaFile mediafile)
         {
             await TokenValidator.Check();
@@ -194,5 +191,70 @@ namespace Recepies_M.Services
             }
 
         }
+
+        public static async Task<bool> EditRecepie(int id, Recepies recepies)
+        {
+            await TokenValidator.Check();
+            var httpClient = new HttpClient();
+
+            var json = JsonConvert.SerializeObject(recepies);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+
+
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl +
+                                                      $"Recipes/EditRecepie/{id}", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        public static async Task<bool> EditRecepieIMG(int id, string title, MediaFile mediafile)
+        {
+            await TokenValidator.Check();
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+
+            var recepiesContext = new MultipartFormDataContent();
+
+            recepiesContext.Add(new StringContent(title), "Title");
+            recepiesContext.Add(new StreamContent(mediafile.GetStream()), "Image", "fdfd");
+
+
+            var response = await httpClient.PutAsync(AppSettings.ApiUrl +
+                                                     $"Recipes/EditRecepieIMG/{id}", recepiesContext);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public static async Task<bool> DeleteRecepie(int id)
+        {
+
+            await TokenValidator.Check();
+            var httpClient = new HttpClient();
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+            
+            var response = await httpClient.DeleteAsync(AppSettings.ApiUrl +
+                                                           $"Recipes/DeleteRecepie/{id}");
+
+            if (!response.IsSuccessStatusCode) return false;
+            return true;
+        }
+
     }
 }

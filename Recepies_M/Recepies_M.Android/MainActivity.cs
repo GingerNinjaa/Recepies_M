@@ -11,7 +11,8 @@ using Plugin.Media;
 
 namespace Recepies_M.Droid
 {
-    [Activity(Label = "Recepies_M", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    //Label = "Recepies_M",
+    [Activity(Label = "Twoje Przepisy", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected  override void OnCreate(Bundle savedInstanceState)
@@ -27,9 +28,13 @@ namespace Recepies_M.Droid
 
             //animation
             AnimationViewRenderer.Init();
-            
+
             //camera
             //await CrossMedia.Current.Initialize();
+
+            // status bar
+            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(0, 0, 0));
+            // Window.SetStatusBarColor(Android.Graphics.Color.Argb(0, 0, 0, 0));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
