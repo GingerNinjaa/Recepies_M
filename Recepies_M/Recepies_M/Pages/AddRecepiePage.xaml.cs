@@ -195,8 +195,19 @@ namespace Recepies_M.Pages
                 return;
             }
 
-             this.file = await CrossMedia.Current.PickPhotoAsync();
+            try
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                {
+                    PhotoSize = PhotoSize.Small,
+                    CompressionQuality = 50
 
+                });
+            }
+            catch (Exception exception)
+            {
+                DisplayAlert("Hmmm", "Wystąpił problem z twoim plikiem.", "OK");
+            }
             if (file == null)
                 return;
 

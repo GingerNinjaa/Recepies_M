@@ -17,14 +17,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="1.5*" />
                 </Grid.ColumnDefinitions>
-                <Image Source="backicon.png"
+                <Image x:Name="ImgBack"
+                       Source="backicon.png"
                        HorizontalOptions="Start"
                        Grid.Column="0"
                        HeightRequest="25"
                        WidthRequest="25"
                        Aspect="AspectFit">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_OnTapped" />
+                        <TapGestureRecognizer  Tapped="ImgBack_OnTapped" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Zaloguj się"
@@ -58,7 +59,8 @@
                    PlaceholderColor="White"
                    BackgroundColor="#263A4F" />
 
-            <Button Text="Login"                  
+            <Button x:Name="BtnLogin"
+                    Text="Login"                  
                     FontFamily="Lobster"
                     HeightRequest="60"
                     WidthRequest="50"

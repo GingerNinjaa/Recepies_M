@@ -38,36 +38,31 @@
                    x:Name="EntName"
                    TextColor="White"
                    PlaceholderColor="White"/>
-            <!--<BoxView HeightRequest="1" 
-                     BackgroundColor="White" Margin="0,-15,0,0"/>-->
+      
             <Entry Placeholder="Email"
                    x:Name="EntEmail"
                    TextColor="White"
                    PlaceholderColor="White"
                     />
-            <!--<BoxView HeightRequest="1"
-                     BackgroundColor="White"
-                     Margin="0,-15,0,0" />-->
+         
             <Entry Placeholder="Hasło"
                    x:Name="EntPassword"
                    IsPassword="True"
                    TextColor="White"
                    PlaceholderColor="White"
                     />
-            <!--<BoxView HeightRequest="1"
-                     BackgroundColor="White"
-                     Margin="0,-15,0,0" />-->
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center"
                          Margin="0,40,0,0">
                 <Label Text="Masz już konto?"
                        TextColor="White" />
-                <Label Text="Kliknij tutaj"
+                <Label x:Name="lblLogin"
+                       Text="Kliknij tutaj"
                        TextDecorations="Underline"
                        TextColor="CornflowerBlue">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="LblLogin" Tapped="LblLogin_OnTapped" />
+                        <TapGestureRecognizer Tapped="LblLogin_OnTapped" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>

@@ -38,7 +38,7 @@
                     Clicked="AddRecepieBtn_OnClicked"/>
 
             <Button x:Name="EditRecepieBtn"
-                    Text="Login"                  
+                    Text="Edytuj swój przepis"                  
                     FontFamily="Lobster"
                     HeightRequest="60"
                     WidthRequest="50"
@@ -51,7 +51,7 @@
                     Clicked="EditRecepieBtn_OnClicked"/>
 
             <Button x:Name="DeleteRecepieBtn"
-                    Text="Login"                  
+                    Text="Usuń swój przepis"                  
                     FontFamily="Lobster"
                     HeightRequest="60"
                     WidthRequest="50"

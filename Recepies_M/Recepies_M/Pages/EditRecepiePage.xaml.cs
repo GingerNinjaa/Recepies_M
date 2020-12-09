@@ -179,8 +179,8 @@ namespace Recepies_M.Pages
             {
                 this.file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
                 {
-                    PhotoSize = PhotoSize.Medium,
-                    CompressionQuality = 10
+                    PhotoSize = PhotoSize.Small,
+                    CompressionQuality = 50
 
                 });
             }

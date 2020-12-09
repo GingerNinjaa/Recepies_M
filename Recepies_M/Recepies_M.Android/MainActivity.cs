@@ -34,7 +34,6 @@ namespace Recepies_M.Droid
 
             // status bar
             Window.SetStatusBarColor(Android.Graphics.Color.Rgb(0, 0, 0));
-            // Window.SetStatusBarColor(Android.Graphics.Color.Argb(0, 0, 0, 0));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
