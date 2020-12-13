@@ -8,5 +8,6 @@ namespace Recepies_M.Settings
     {
         public static string ApiUrl = "https://gingerninjaaapiservice.pl/api/";
         public static string ApiUrlIMG = "https://gingerninjaaapiservice.pl/";
+        public static int pageNumber = 0;
     }
 }

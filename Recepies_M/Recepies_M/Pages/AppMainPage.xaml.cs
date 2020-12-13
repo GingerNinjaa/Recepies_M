@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Recepies_M.Models;
 using Recepies_M.Services;
+using Recepies_M.Settings;
 using Recepies_M.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -16,11 +17,15 @@ namespace Recepies_M.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppMainPage : ContentPage
     {
-       // private int pageNumber = 0;
+        // private int pageNumber = 0;
+        private AppMainPageViewModel AppMainPageViewModel;
+        public ObservableCollection<RecepiesPartial> RecepiesesColection { get; private set; }
+
 
         public AppMainPage()
         {
             InitializeComponent();
+            RecepiesesColection = new ObservableCollection<RecepiesPartial>();
         }
 
 
@@ -37,10 +42,22 @@ namespace Recepies_M.Pages
             GridOverlay.IsVisible = false;
         }
 
-        private void CvRecepies_OnRemainingItemsThresholdReached(object sender, EventArgs e)
+        private async void CvRecepies_OnRemainingItemsThresholdReached(object sender, EventArgs e)
         {
-            AppMainPageViewModel appMainPageVM = new AppMainPageViewModel();
-            appMainPageVM.GetAll();
+            AppSettings.pageNumber++;
+            var recepies = await ApiService.GetAllRecepiesPartial(AppSettings.pageNumber, 5);
+            if (recepies == null)
+            {
+                // pageNumber--;
+            }
+            foreach (var recepie in recepies)
+            {
+                RecepiesesColection.Add(recepie);
+            }
+
+            CvRecepies.ItemsSource = RecepiesesColection;
+            //var task = AppMainPageViewModel.GetAll();
+            //await this.AppMainPageViewModel.GetAll();
         }
 
 

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Recepies_M.Models;
 using Recepies_M.Services;
+using Recepies_M.Settings;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -16,7 +17,7 @@ namespace Recepies_M.ViewModels
     public class AppMainPageViewModel : INotifyPropertyChanged
     {
         bool isRefreshing;
-        static int pageNumber = 0;
+        static int pageNumber = AppSettings.pageNumber;
         public ObservableCollection<RecepiesPartial> RecepiesesColection { get; private set; }
         public string userName { get; set; }
 
@@ -72,7 +73,7 @@ namespace Recepies_M.ViewModels
             var recepies = await ApiService.GetAllRecepiesPartial(pageNumber, 5);
             if (recepies == null)
             {
-                pageNumber--;
+               // pageNumber--;
             }
             foreach (var recepie in recepies)
             {
