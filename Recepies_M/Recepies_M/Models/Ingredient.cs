@@ -8,7 +8,7 @@ namespace Recepies_M.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int amount { get; set; }
+        public double amount { get; set; }
         public string amountDesc { get; set; }
         public int recipeId { get; set; }
     }

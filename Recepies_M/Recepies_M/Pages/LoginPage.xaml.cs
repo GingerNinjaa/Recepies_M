@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Recepies_M.Services;
+using Recepies_M.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,7 @@ namespace Recepies_M.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private LoginPageViewModel loginPageViewModel;
         public LoginPage()
         {
             InitializeComponent();
@@ -26,25 +28,25 @@ namespace Recepies_M.Pages
         }
 
 
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            this.BtnLogin.IsEnabled = false;
-            var responce = await ApiService.LoginUser(EntEmail.Text, EntPassword.Text);
+        //private async void Button_OnClicked(object sender, EventArgs e)
+        //{
+        //    this.BtnLogin.IsEnabled = false;
+        //    var responce = await ApiService.LoginUser(EntEmail.Text, EntPassword.Text);
 
-            if (responce)
-            {
-                await DisplayAlert("Witamy", "Zalogowano do aplikacji", "Zaczynamy");
-                this.BtnLogin.IsEnabled = true;
-                Preferences.Set("email", EntEmail.Text);
-                Preferences.Set("password", EntPassword.Text);
+        //    if (responce)
+        //    {
+        //        await DisplayAlert("Witamy", "Zalogowano do aplikacji", "Zaczynamy");
+        //        this.BtnLogin.IsEnabled = true;
+        //        Preferences.Set("email", EntEmail.Text);
+        //        Preferences.Set("password", EntPassword.Text);
 
-                Application.Current.MainPage = new NavigationPage(new AppMainPage());
-            }
-            else
-            {
-                await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
-                this.BtnLogin.IsEnabled = true;
-            }
-        }
+        //        Application.Current.MainPage = new NavigationPage(new AppMainPage());
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+        //        this.BtnLogin.IsEnabled = true;
+        //    }
+        //}
     }
 }

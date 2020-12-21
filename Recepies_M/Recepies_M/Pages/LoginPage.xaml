@@ -4,10 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-
+             xmlns:viewModels="clr-namespace:Recepies_M.ViewModels;assembly=Recepies_M"
              mc:Ignorable="d"
              x:Class="Recepies_M.Pages.LoginPage"
              BackgroundColor="#263A4F">
+    <ContentPage.BindingContext>
+        <viewModels:LoginPageViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="20"
                      Spacing="15">
@@ -30,6 +33,7 @@
                 </Image>
                 <Label Text="Zaloguj się"
                        TextColor="White"
+                       IsEnabled="{Binding IsEnabled}"
                        FontFamily="Lobster"
                        VerticalOptions="Start"
                        HorizontalOptions="Center"
@@ -46,12 +50,14 @@
                 BackgroundColor="Transparent"/>
 
             <Entry Placeholder="Email"
+                   Text="{Binding EntEmail}"
                    x:Name="EntEmail"
                    FontFamily="Lobster"
                    TextColor="White"
                    PlaceholderColor="White"
                    BackgroundColor="#263A4F" />
             <Entry Placeholder="Hasło"
+                   Text="{Binding EntPassword}"
                    x:Name="EntPassword"
                    FontFamily="Lobster"
                    IsPassword="True"
@@ -70,8 +76,8 @@
                     BackgroundColor="Transparent" 
                     BorderWidth="2"
                     BorderColor="White"
-                    Command="{Binding OpenMenuPage}"
-                    Clicked="Button_OnClicked"/>
+                    Command="{Binding LoginCommand}"/>
+            <!-- Clicked="Button_OnClicked"-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
