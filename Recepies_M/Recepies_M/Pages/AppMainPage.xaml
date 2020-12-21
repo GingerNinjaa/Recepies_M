@@ -9,6 +9,9 @@
         <viewModels:AppMainPageViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <!--        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Teal"
+                     Command="{Binding RefreshCommand}">-->
         <RefreshView IsRefreshing="{Binding IsRefreshing}"
                      RefreshColor="Teal"
                      Command="{Binding RefreshCommand}">
@@ -50,8 +53,8 @@
                         <!--RemainingItemsThresholdReached="CvRecepies_OnRemainingItemsThresholdReached"-->
                         <CollectionView x:Name="CvRecepies"                              
                                         SelectionMode="Single"
-                                        RemainingItemsThreshold="1"
-                                        RemainingItemsThresholdReached="CvRecepies_OnRemainingItemsThresholdReached"
+                                        RemainingItemsThreshold="0"
+                                        RemainingItemsThresholdReachedCommand="{Binding ItemTresholdReachedCommand}"
                                         SelectionChanged="CvRecepies_OnSelectionChanged"
                                         ItemsSource="{Binding RecepiesesColection}">
                             <CollectionView.ItemsLayout>

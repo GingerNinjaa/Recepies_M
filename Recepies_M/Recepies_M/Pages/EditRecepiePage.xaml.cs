@@ -188,8 +188,8 @@ namespace Recepies_M.Pages
             {
                 DisplayAlert("Hmmm", "Wystąpił problem z twoim plikiem.", "OK");
             }
-            
-            
+
+
             if (file == null)
                 return;
 
@@ -211,38 +211,44 @@ namespace Recepies_M.Pages
         }
 
         private async void BtEDITRecepie_OnClicked(object sender, EventArgs e)
-        { 
-            
-            Recepies recepies = new Recepies();
-
-            recepies.id = this.Recepieses.id;
-            recepies.title = this.EntryTitle.Text;
-            recepies.description = this.EntryDescription.Text;
-            recepies.preparationTime = Int32.Parse(this.EntryPreparationTime.Text);
-            recepies.cookingTime = Int32.Parse(this.EntryCookingTime.Text);
-            recepies.people = Int32.Parse(this.EntryPeople.Text);
-            recepies.difficulty = this.EntryDifficulty.Text;
-            recepies.category = this.EntryCategory.Text;
-            recepies.UserId = Preferences.Get("userId", 0);
-            
-
-            recepies.ingredients = this.Iingredients;
-            recepies.preparationSteps = this.PreparationSteps;
-
-            var responce = await ApiService.EditRecepie(recepies.id, recepies);
-
-            if (file != null)
+        {
+            try
             {
-                responce = await ApiService.EditRecepieIMG(recepies.id, recepies.title, this.file);
-            }
-  
+                Recepies recepies = new Recepies();
 
-            if (responce)
-            {
-                await DisplayAlert("Sukces!", "Pomyślnie dokonano edycji przepisu", "OK");
-                Navigation.PopModalAsync();
+                recepies.id = this.Recepieses.id;
+                recepies.title = this.EntryTitle.Text;
+                recepies.description = this.EntryDescription.Text;
+                recepies.preparationTime = Int32.Parse(this.EntryPreparationTime.Text);
+                recepies.cookingTime = Int32.Parse(this.EntryCookingTime.Text);
+                recepies.people = Int32.Parse(this.EntryPeople.Text);
+                recepies.difficulty = this.EntryDifficulty.Text;
+                recepies.category = this.EntryCategory.Text;
+                recepies.UserId = Preferences.Get("userId", 0);
+
+
+                recepies.ingredients = this.Iingredients;
+                recepies.preparationSteps = this.PreparationSteps;
+
+                var responce = await ApiService.EditRecepie(recepies.id, recepies);
+
+                if (file != null)
+                {
+                    responce = await ApiService.EditRecepieIMG(recepies.id, recepies.title, this.file);
+                }
+
+
+                if (responce)
+                {
+                    await DisplayAlert("Sukces!", "Pomyślnie dokonano edycji przepisu", "OK");
+                    Navigation.PopModalAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+                }
             }
-            else
+            catch (Exception exception)
             {
                 await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
             }

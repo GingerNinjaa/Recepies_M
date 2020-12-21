@@ -218,39 +218,48 @@ namespace Recepies_M.Pages
                 return stream;
             });
 
-          
+
         }
 
         private async void BtAddRecepie_OnClicked(object sender, EventArgs e)
         {
-            Recepies  recepies = new Recepies();
+            try
+            {
 
-          //var ImageArray = FromFile.ToArray(file.GetStream());
 
-            recepies.title = this.EntryTitle.Text;
-            recepies.description = this.EntryDescription.Text;
-            recepies.preparationTime = Int32.Parse(this.EntryPreparationTime.Text);
-            recepies.cookingTime = Int32.Parse(this.EntryCookingTime.Text);
-            recepies.people = Int32.Parse(this.EntryPeople.Text);
-            recepies.difficulty = this.EntryDifficulty.Text;
-            recepies.category = this.EntryCategory.Text;
-            recepies.UserId = Preferences.Get("userId", 0);
+                Recepies recepies = new Recepies();
 
-            recepies.ingredients = this.Iingredients;
-            recepies.preparationSteps = this.PreparationSteps;
+                //var ImageArray = FromFile.ToArray(file.GetStream());
 
-           await ApiService.AddRecepie(recepies);
-           var responce = await ApiService.AddRecepieIMG( recepies.title, this.file);
+                recepies.title = this.EntryTitle.Text;
+                recepies.description = this.EntryDescription.Text;
+                recepies.preparationTime = Int32.Parse(this.EntryPreparationTime.Text);
+                recepies.cookingTime = Int32.Parse(this.EntryCookingTime.Text);
+                recepies.people = Int32.Parse(this.EntryPeople.Text);
+                recepies.difficulty = this.EntryDifficulty.Text;
+                recepies.category = this.EntryCategory.Text;
+                recepies.UserId = Preferences.Get("userId", 0);
 
-           if (responce)
-           {
-               await DisplayAlert("Sukces!", "Pomyślnie dodano nowy przepis", "OK");
-               Application.Current.MainPage = new NavigationPage(new AppMainPage());
-           }
-           else
-           {
-               await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
-           }
+                recepies.ingredients = this.Iingredients;
+                recepies.preparationSteps = this.PreparationSteps;
+
+                await ApiService.AddRecepie(recepies);
+                var responce = await ApiService.AddRecepieIMG(recepies.title, this.file);
+
+                if (responce)
+                {
+                    await DisplayAlert("Sukces!", "Pomyślnie dodano nowy przepis", "OK");
+                    Application.Current.MainPage = new NavigationPage(new AppMainPage());
+                }
+                else
+                {
+                    await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+                }
+            }
+            catch (Exception exception)
+            {
+                await DisplayAlert("Ooops", "Coś poszło nie tak", "Zamknij");
+            }
         }
     }
 }

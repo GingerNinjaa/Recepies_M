@@ -10,6 +10,7 @@ using Recepies_M.Models;
 using Recepies_M.Services;
 using Recepies_M.Settings;
 using Xamarin.Essentials;
+using Recepies_M.Pages;
 using Xamarin.Forms;
 
 namespace Recepies_M.ViewModels
@@ -17,14 +18,13 @@ namespace Recepies_M.ViewModels
     public class AppMainPageViewModel : INotifyPropertyChanged
     {
         bool isRefreshing;
-        static int pageNumber = AppSettings.pageNumber;
+        private int pageNumber = 0;
         public ObservableCollection<RecepiesPartial> RecepiesesColection { get; private set; }
         public string userName { get; set; }
 
         public AppMainPageViewModel()
         {
             RecepiesesColection = new ObservableCollection<RecepiesPartial>();
-            //username
             GetAll();
         }
         public bool IsRefreshing
@@ -38,6 +38,8 @@ namespace Recepies_M.ViewModels
         }
 
         public ICommand RefreshCommand => new Command(async () => await RefreshItemsAsync());
+        public ICommand ItemTresholdReachedCommand => new Command(async () => await GetAll());
+
 
         async Task RefreshItemsAsync()
         {
@@ -47,6 +49,7 @@ namespace Recepies_M.ViewModels
         public async Task RefreshApi()
         {
             //czysci kolekcje
+            
             RecepiesesColection.Clear();
             pageNumber = 1;
 
@@ -65,22 +68,53 @@ namespace Recepies_M.ViewModels
 
         public async Task GetAll()
         {
+            try
+            {
 
+       
             //refresh user name
             this.userName = Preferences.Get("userName", String.Empty);
             pageNumber++;
 
             var recepies = await ApiService.GetAllRecepiesPartial(pageNumber, 5);
-            if (recepies == null)
+            if (recepies.Count == 0)
             {
-               // pageNumber--;
+                pageNumber--;
             }
             foreach (var recepie in recepies)
             {
                 RecepiesesColection.Add(recepie);
             }
-
+            }
+            catch (Exception e)
+            {
+                
+            }
         }
+
+        public async Task OnSelection()
+        {
+            //try
+            //{
+            //    var curentSelection = e.CurrentSelection.FirstOrDefault() as RecepiesPartial;
+
+            //    if (curentSelection == null)
+            //    {
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        Navigation.PushModalAsync(new RecepiesDetail(curentSelection.id));
+            //        ((CollectionView)sender).SelectedItem = null;
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //}
+        }
+
+
+
 
         #region INotifyPropertyChanged
 

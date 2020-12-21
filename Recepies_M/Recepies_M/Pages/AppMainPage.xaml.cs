@@ -17,15 +17,11 @@ namespace Recepies_M.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppMainPage : ContentPage
     {
-        // private int pageNumber = 0;
         private AppMainPageViewModel AppMainPageViewModel;
-        public ObservableCollection<RecepiesPartial> RecepiesesColection { get; private set; }
-
-
         public AppMainPage()
         {
             InitializeComponent();
-            RecepiesesColection = new ObservableCollection<RecepiesPartial>();
+
         }
 
 
@@ -42,23 +38,7 @@ namespace Recepies_M.Pages
             GridOverlay.IsVisible = false;
         }
 
-        private async void CvRecepies_OnRemainingItemsThresholdReached(object sender, EventArgs e)
-        {
-            AppSettings.pageNumber++;
-            var recepies = await ApiService.GetAllRecepiesPartial(AppSettings.pageNumber, 5);
-            if (recepies == null)
-            {
-                // pageNumber--;
-            }
-            foreach (var recepie in recepies)
-            {
-                RecepiesesColection.Add(recepie);
-            }
-
-            CvRecepies.ItemsSource = RecepiesesColection;
-            //var task = AppMainPageViewModel.GetAll();
-            //await this.AppMainPageViewModel.GetAll();
-        }
+    
 
 
         private void CvRecepies_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
